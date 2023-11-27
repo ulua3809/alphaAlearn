@@ -160,6 +160,7 @@ class misson():
 		return lesson(resbody=self._resbody).getReqduration()
 
 	def isLearned(self) -> bool:
+		return False
 		return lesson(resbody=self._resbody).isLearned()
 
 	def missonmatched(self) -> bool:
@@ -194,7 +195,10 @@ class video(misson):
 				self.nextmisson()
 				return None
 			learnedDur = (self.getLearneddur() // (1000 * 60)) % 60
-			duration = self.getReqduration() - learnedDur + 1
+			if self.getReqduration() > learnedDur:
+				duration = self.getReqduration() - learnedDur + 1
+			else:
+				duration = self.getReqduration() + 1
 			logPrint("正在看视频/文档：{},时长{}mins".format(self.getlessontitle(), duration))
 			time.sleep(duration * 60)
 			self.nextmisson()

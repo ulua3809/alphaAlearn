@@ -1,6 +1,6 @@
 import json
 import os
-import multiprocessing as mult
+import threading
 from time import sleep
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
@@ -104,31 +104,25 @@ def ms2time(msint: int) -> str:
 	return "{:02d}:{:02d}.{:03d}".format(min, sec, ms)
 
 
-missonproc = mult.Process()
-
-
 def pushmisson(browser: webdriver.Chrome, lessonobj: ulua.lesson):
-	missonObj = lessonobj.getmissonObj(webdriverObj=browser)
+	# missonObj = lessonobj.getmissonObj(webdriverObj=browser)
 
-	if missonObj.missonmatched():
-		missonObj.learn()
-	else:
-		print("misson id{} out of date skip".format(missonObj.getlessonId()))
+	# if missonObj.missonmatched():
+	# 	missonObj.learn()
+	# else:
+	# 	print("misson id{} out of date skip".format(missonObj.getlessonId()))
 
 	# Todo:fix webdriver multproc
 
-	# global missonproc
-	# missonObj = lessonobj.getmissonObj(webdriverObj=browser)
-	# if missonObj.missonmatched():
-	# 	if missonproc.is_alive():
-	# 		print("Process {} time out,terminating".format(missonproc.name))
-	# 		missonproc.terminate()
-	# 	missonproc = mult.Process(target=missonObj.learn,
-	# 	                          name="lessonId {}".format(missonObj.getlessonId()),
-	# 	                          args=(browser, ))
-	# 	missonproc.start()
-	# else:
-	# 	print("misson id{} out of date skip".format(missonObj.getlessonId()))
+	missonObj = lessonobj.getmissonObj(webdriverObj=browser)
+	if missonObj.missonmatched():
+		missonThread = threading.Thread(target=missonObj.learn,
+		                                name="lessonId {}".format(missonObj.getlessonId()),
+		                                args=(),
+		                                daemon=True)
+		missonThread.start()
+	else:
+		print("misson id{} out of date skip".format(missonObj.getlessonId()))
 
 
 if __name__ == "__main__":
