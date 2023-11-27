@@ -171,12 +171,14 @@ class misson():
 				nextBtn = self._webdriverObj.find_element(
 				    by="xpath", value="/html/body/div[1]/div/div/div[1]/div[2]/div/button[3]")
 				nextBtn.click()
+		return None
 
 	def learn(self):
 		if self.isLearned() and False:
 			print("arlready learned skip")
 			self.nextmisson()
 		print("unsupport type skip it")
+		time.sleep(10)
 		self.nextmisson()
 
 
@@ -189,7 +191,10 @@ class video(misson):
 				self.nextmisson()
 				return None
 			learnedDur = (self.getLearneddur() // (1000 * 60)) % 60
-			duration = self.getReqduration() - learnedDur + 1
+			if learnedDur < self.getReqduration():
+				duration = self.getReqduration() - learnedDur + 1
+			else:
+				duration = self.getReqduration() + 1
 			logPrint("正在看视频/文档：{},时长{}mins".format(self.getlessontitle(), duration))
 			time.sleep(duration * 60)
 			self.nextmisson()
