@@ -6,7 +6,7 @@
 			"lessonId": "5e43cfa24f503a0470aa8058",
 			"lessonPath": "dai-ma-jie-guo",
 			"coursewareId": "60221c7a9deec539c1367f8b",
-			"title": "7\u3001\u4ee3\u7801\u7ed3\u679c",
+			"title": "7、代码结果",
 			"type": "single",
 			"parentId": "5e8d963642bd916bded4a8dc",
 			"order": 30,
@@ -30,7 +30,7 @@
 					"resourceId": "5e43d1494f503a0470aa8084",
 					"rid": null,
 					"score": 10,
-					"title": "\u4ee5\u4e0b\u4ee3\u7801\u7684\u8f93\u51fa\u662f\u4ec0\u4e48\uff1f",
+					"title": "以下代码的输出是什么？",
 					"type": "exercise"
 				}
 			],
@@ -43,10 +43,10 @@
 				"5e43d1494f503a0470aa8084": {
 					"_id": "5e43d1874f503a0470aa8087",
 					"artificialJudge": false,
-					"title": "\u4ee5\u4e0b\u4ee3\u7801\u7684\u8f93\u51fa\u662f\u4ec0\u4e48\uff1f",
+					"title": "以下代码的输出是什么？",
 					"description": "",
 					"resId": "5e43d1494f503a0470aa8084",
-					"question": "\u4ee5\u4e0b\u4ee3\u7801\u7684\u8f93\u51fa\u662f\u4ec0\u4e48\uff1f\n```\nint x = 14;\nSystem.out.println(x++);\n```",
+					"question": "以下代码的输出是什么？\n```\nint x = 14;\nSystem.out.println(x++);\n```",
 					"exerciseType": "choice",
 					"subType": "single-choice",
 					"hint": "",
@@ -56,8 +56,8 @@
 					"tags": [
 						{
 							"_id": "5dde28a98ebb7f68240a075d",
-							"title": "\u8fd0\u7b97\u7b26",
-							"tagType": "\u77e5\u8bc6\u70b9",
+							"title": "运算符",
+							"tagType": "知识点",
 							"tagTypeColor": "#4EC256",
 							"creator": null,
 							"createAt": "2019-11-27T07:41:29.700Z",
@@ -66,7 +66,7 @@
 					],
 					"createdAt": "2020-02-12T10:20:55.851Z",
 					"creator": 481,
-					"note": "\u9009\u62e9",
+					"note": "选择",
 					"notes": "",
 					"options": [
 						{
@@ -94,7 +94,7 @@
 					"questionbank": [
 						{
 							"_id": "5dc37f0c3694024210689e98",
-							"name": "\u8d22\u4e13java\u7ec3\u4e60\u96c6",
+							"name": "财专java练习集",
 							"totalNum": 193,
 							"owner": 1,
 							"createdAt": "2019-11-07T02:18:52.301Z"
@@ -123,12 +123,12 @@
 			"aced": true,
 			"commitNum": 1,
 			"correct": true,
-			"correctAt": "2023-11-23T08:15:20.000Z",
+			"correctAt": "2023-11-22T07:46:13.000Z",
 			"lessonId": "5e43cfa24f503a0470aa8058",
 			"lessonPath": "5e43cfa24f503a0470aa8058",
 			"score": 10,
-			"duration": 232901,
-			"timeConsuming": 15374,
+			"duration": 795453,
+			"timeConsuming": 731002,
 			"correctNum": 1
 		},
 		"exercisesLearnData": {
@@ -142,7 +142,7 @@
 				},
 				"confirm": false,
 				"score": 10,
-				"correctAt": "2023-11-23T08:15:20.000Z",
+				"correctAt": "2023-11-22T07:46:13.000Z",
 				"lastAnswer": {
 					"choices": [
 						"5e43d10f793d0538f0ec5d78"
