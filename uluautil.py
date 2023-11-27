@@ -3,23 +3,20 @@ import time
 from selenium import webdriver
 
 
-class perfLog:
+class harObj:
 	_logdict = {}
 
 	def __init__(self, logdict: dict) -> None:
 		self._logdict = logdict
 
-	def getLogMethod(self) -> str:
-		return self._logdict["message"]["method"]
-
-	def getLogType(self) -> str:
-		return self._logdict["message"]["params"]["type"]
-
 	def getUrl(self) -> str:
-		return self._logdict["message"]["params"]["response"]["url"]
+		return self._logdict["request"]["url"]
 
-	def getReqId(self) -> str:
-		return self._logdict["message"]["params"]["requestId"]
+	def getRequset(self) -> dict:
+		return self._logdict["request"]
+
+	def getResponse(self) -> dict:
+		return self._logdict["response"]
 
 	def getLogdict(self) -> dict:
 		return self._logdict
@@ -60,7 +57,7 @@ class lesson:
 	def __init__(self, questDict: dict = {}, resbody: dict = {}) -> None:
 		if questDict:
 			self._questDict = questDict
-			self._resbody = json.loads(questDict["body"])
+			self._resbody = json.loads(questDict["content"]["text"])
 		if resbody:
 			self._resbody = resbody
 
@@ -176,7 +173,7 @@ class misson():
 				nextBtn.click()
 
 	def learn(self):
-		if self.isLearned():
+		if self.isLearned() and False:
 			print("arlready learned skip")
 			self.nextmisson()
 		print("unsupport type skip it")
@@ -187,7 +184,7 @@ class video(misson):
 
 	def learn(self):
 		if self.missonmatched():
-			if self.isLearned():
+			if self.isLearned() and False:
 				print("arlready learned skip")
 				self.nextmisson()
 				return None

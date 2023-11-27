@@ -4,31 +4,41 @@ import multiprocessing as mult
 from time import sleep
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
+from browsermobproxy import Client, Server
 import uluautil as ulua
 
-testdataPath = "./autodata"
-logpath = "./log.txt"
+browserdataPath = "./autodata"
 chromedriverPath = "./chromedriver.exe"
+mobproxyPath = "./browsermob-proxy-2.1.4/bin/browsermob-proxy.bat"
+logpath = "./log.txt"
 
 
-def initize(browserdataPath: str, chromedriverPath: str):
+def initize():
 	"""
 	use relative path to script
 	"""
-	global logpath
+	# initize path
+	global browserdataPath, chromedriverPath, mobproxyPath, logpath
 	os.chdir(os.path.dirname(os.path.abspath(__file__)))
 	browserdataPath = os.path.abspath(browserdataPath)
 	chromedriverPath = os.path.abspath(chromedriverPath)
+	mobproxyPath = os.path.abspath(mobproxyPath)
+	logpath = os.path.abspath(logpath)
+
 	if os.path.exists(logpath):
 		os.remove(logpath)
 
+	proxyserver = Server(mobproxyPath)
+	proxyserver.start()
+	proxy = proxyserver.create_proxy()
 	# initize driver
 	service = Service(executable_path=chromedriverPath)
 	chopt = webdriver.ChromeOptions()
 	chopt.binary_location = "C:\\Program Files\\BraveSoftware\\Brave-Browser\\Application\\brave.exe"
 	#屏蔽webdrive检测
-	chopt.add_argument("--disable-web-security")
 	chopt.add_argument("--allow-running-insecure-content")
+	chopt.add_argument("--disable-web-security")
+	chopt.add_argument("--proxy-server={0}".format(proxy.proxy))
 	# 退出不关闭浏览器
 	chopt.add_experimental_option("detach", True)
 	# 关闭webdriver log输出
@@ -40,7 +50,7 @@ def initize(browserdataPath: str, chromedriverPath: str):
 	chopt.add_argument("--user-data-dir=" + browserdataPath)
 	# 启动浏览器
 	webdriverObj = webdriver.Chrome(chopt, service=service)
-	return webdriverObj
+	return (webdriverObj, proxy)
 
 
 def logtoFile(str1: str):
@@ -50,7 +60,7 @@ def logtoFile(str1: str):
 	file1.close()
 
 
-def main(browser: webdriver.Chrome):
+def main(browser: webdriver.Chrome, proxy: Client):
 	#屏蔽webdrive检测
 	browser.execute_cdp_cmd("Page.addScriptToEvaluateOnNewDocument", {
 	    "source":
@@ -63,38 +73,33 @@ def main(browser: webdriver.Chrome):
 
 	browser.get("https://sxgxy.alphacoding.cn/")
 
+	proxy.new_har(options={'captureContent': True, 'captureHeaders': True})
 	while True:
-		log = browser.get_log('performance')
-		for entry in log:
-			logdict = json.loads(entry["message"])
-			logobj = ulua.perfLog(logdict=logdict)
+		log = proxy.har
+		proxy.new_har(options={'captureContent': True, 'captureHeaders': True})
+		for entry in log["log"]["entries"]:
+			logobj = ulua.harObj(logdict=entry)
 			matchlog(logobj, browser=browser)
 		sleep(1)
 
 
-def matchlog(logobj: ulua.perfLog, browser: webdriver.Chrome):
-	if logobj.getLogMethod() == "Network.responseReceived":
-		if logobj.getLogType() == "XHR":
-			# print("-" * 50)
-			# print("url:", logobj.getUrl())
-			# print("requestId:", logobj.getReqId())
-			if "recordStudyTime" in logobj.getUrl():
-				Stime = ulua.stuTime(
-				    browser.execute_cdp_cmd('Network.getRequestPostData',
-				                            {'requestId': logobj.getReqId()}))
-				ulua.logPrint("时长上报成功，开始:{},时长:{},课程id:{},题目类型:{}".format(
-				    Stime.getStartTime(), ms2time(Stime.getDuration()), Stime.getlessonId(),
-				    Stime.getlessonType()))
-			elif "detail" in logobj.getUrl():
-				lessonobj = ulua.lesson(
-				    browser.execute_cdp_cmd('Network.getResponseBody',
-				                            {'requestId': logobj.getReqId()}))
-				logtoFile(json.dumps(lessonobj.getresBody()))
-				print("标题:{},类型:{},课程id:{},已学时长:{},需要时长:{}mins,完成状态{}".format(
-				    lessonobj.getlessontitle(), lessonobj.getlessontype(), lessonobj.getlessonId(),
-				    ms2time(lessonobj.getLearneddur()), lessonobj.getReqduration(),
-				    lessonobj.isLearned()))
-				pushmisson(browser, lessonobj)
+def matchlog(logobj: ulua.harObj, browser: webdriver.Chrome):
+
+	# print("-" * 50)
+	# print("url:", logobj.getUrl())
+	if "recordStudyTime" in logobj.getUrl():
+		Stime = ulua.stuTime(logobj.getRequset())
+		ulua.logPrint("时长上报成功，开始:{},时长:{},课程id:{},题目类型:{}".format(Stime.getStartTime(),
+		                                                          ms2time(Stime.getDuration()),
+		                                                          Stime.getlessonId(),
+		                                                          Stime.getlessonType()))
+	elif "detail" in logobj.getUrl():
+		lessonobj = ulua.lesson(logobj.getResponse())
+		logtoFile(json.dumps(lessonobj.getresBody()))
+		print("标题:{},类型:{},课程id:{},已学时长:{},需要时长:{}mins,完成状态{}".format(
+		    lessonobj.getlessontitle(), lessonobj.getlessontype(), lessonobj.getlessonId(),
+		    ms2time(lessonobj.getLearneddur()), lessonobj.getReqduration(), lessonobj.isLearned()))
+		pushmisson(browser, lessonobj)
 
 
 def ms2time(msint: int) -> str:
@@ -132,4 +137,6 @@ def pushmisson(browser: webdriver.Chrome, lessonobj: ulua.lesson):
 
 
 if __name__ == "__main__":
-	main(initize(testdataPath, chromedriverPath))
+	# initize()
+	webdriverObj, proxy = initize()
+	main(webdriverObj, proxy)
