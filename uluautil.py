@@ -160,7 +160,6 @@ class misson():
 		return lesson(resbody=self._resbody).getReqduration()
 
 	def isLearned(self) -> bool:
-		return False
 		return lesson(resbody=self._resbody).isLearned()
 
 	def missonmatched(self) -> bool:
