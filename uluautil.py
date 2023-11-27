@@ -130,6 +130,8 @@ class lesson:
 			return videoAndDoc(self._resbody, webdriverObj=webdriverObj)
 		elif self.getlessontype() in ["single-choice", "multiple-choice", "judgment"]:
 			return Choice(self._resbody, webdriverObj=webdriverObj)
+		elif self.getlessontype() in ["code-fill"]:
+			return codeFill(self._resbody, webdriverObj=webdriverObj)
 		else:
 			return misson(self._resbody, webdriverObj=webdriverObj)
 
@@ -182,11 +184,11 @@ class misson():
 					    by="xpath", value="/html/body/div[1]/div/div/div[1]/div[2]/div/button[3]")
 					nextBtn.click()
 
-	def commit(self):
+	def codenext(self):
 		if self._webdriverObj:
 			comitBtn = self._webdriverObj.find_element(
 			    By.CSS_SELECTOR,
-			    "[class='font-medium whitespace-nowrap shadow-sm rounded border focus:ring-2 focus:outline-none border-transparent text-white bg-success-600 hover:bg-success-700 focus:ring-primary-500 focus:ring-offset-1 px-4 py-2 text-base inline-flex items-center justify-center']"
+			    "[class='font-medium whitespace-nowrap  rounded border focus:ring-2 focus:outline-none  text-blue-700 border-transparent bg-blue-100 hover:bg-blue-200 focus:ring-primary-500  focus:ring-offset-1 px-4 py-2 text-sm inline-flex items-center justify-center']"
 			)
 			comitBtn.click()
 
@@ -219,6 +221,14 @@ class videoAndDoc(misson):
 
 class Choice(misson):
 
+	def commit(self):
+		if self._webdriverObj:
+			comitBtn = self._webdriverObj.find_element(
+			    By.CSS_SELECTOR,
+			    "[class='font-medium whitespace-nowrap shadow-sm rounded border focus:ring-2 focus:outline-none border-transparent text-white bg-success-600 hover:bg-success-700 focus:ring-primary-500 focus:ring-offset-1 px-4 py-2 text-base inline-flex items-center justify-center']"
+			)
+			comitBtn.click()
+
 	def learn(self):
 		if self.missonmatched():
 			answerid = []
@@ -240,3 +250,45 @@ class Choice(misson):
 				self.commit()
 			time.sleep(5)
 			self.nextmisson()
+
+
+class codeFill(misson):
+
+	def commit(self):
+		if self._webdriverObj:
+			comitBtn = self._webdriverObj.find_element(
+			    By.CSS_SELECTOR,
+			    "[class='font-medium whitespace-nowrap shadow-sm rounded border focus:ring-2 focus:outline-none border-transparent text-white bg-success-600 hover:bg-success-700 focus:ring-primary-500 focus:ring-offset-1 px-4 py-2 text-sm inline-flex items-center justify-center']"
+			)
+			comitBtn.click()
+			time.sleep(5)
+			nextBtn = self._webdriverObj.find_element(
+			    By.CSS_SELECTOR,
+			    "[class='font-medium whitespace-nowrap  rounded border focus:ring-2 focus:outline-none  text-blue-700 border-transparent bg-blue-100 hover:bg-blue-200 focus:ring-primary-500  focus:ring-offset-1 px-4 py-2 text-sm inline-flex items-center justify-center']"
+			)
+			nextBtn.click()
+
+	def learn(self):
+		if self.missonmatched():
+			fillDict = {}
+			for ans in self._resbody["data"]["lesson"]["exercises"][
+			    self.getresourceId()]["fillBlanks"]:
+				fillDict[ans["id"]] = ans["matchRule"]
+				print("blank id {},fill {}".format(ans["id"], ans["matchRule"]))
+			if self._webdriverObj:
+				if self.isLearned():
+					print("arlready learned skip")
+					self.nextmisson()
+					return None
+				self._webdriverObj.implicitly_wait(2)
+				for blkid in fillDict:
+					textBox = self._webdriverObj.find_element(
+					    By.XPATH, '//*[@id="{}"]/div/input'.format(blkid))
+					textBox.clear()
+					textBox.send_keys(fillDict[blkid])
+				time.sleep(2)
+				if self.missonmatched():
+					self.commit()
+					time.sleep(15)
+				if self.missonmatched():
+					self.codenext()
