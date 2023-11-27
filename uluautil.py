@@ -9,6 +9,9 @@ class harObj:
 	def __init__(self, logdict: dict) -> None:
 		self._logdict = logdict
 
+	def getstatus(self):
+		return self._logdict["response"]["status"]
+
 	def getUrl(self) -> str:
 		return self._logdict["request"]["url"]
 
@@ -28,7 +31,7 @@ class stuTime:
 
 	def __init__(self, studict: dict) -> None:
 		self._StimeDic = studict
-		self._postData = json.loads(studict["postData"])
+		self._postData = json.loads(studict["postData"]["text"])
 
 	def getpostdata(self) -> dict:
 		return self._postData
@@ -174,12 +177,12 @@ class misson():
 		return None
 
 	def learn(self):
-		if self.isLearned() and False:
-			print("arlready learned skip")
+		if self.missonmatched():
+			if self.isLearned() and False:
+				print("arlready learned skip")
+				self.nextmisson()
+			print("unsupport type skip it")
 			self.nextmisson()
-		print("unsupport type skip it")
-		time.sleep(10)
-		self.nextmisson()
 
 
 class video(misson):
