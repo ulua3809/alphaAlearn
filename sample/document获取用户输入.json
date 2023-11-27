@@ -1,0 +1,57 @@
+{
+	"ok": true,
+	"data": {
+		"lesson": {
+			"id": 5140,
+			"lessonId": "5e43d40c4f503a0470aa80a1",
+			"lessonPath": "huo-qu-yong-hu-shu-ru",
+			"coursewareId": "60221c7a9deec539c1367f8b",
+			"title": "\u83b7\u53d6\u7528\u6237\u8f93\u5165",
+			"type": "document",
+			"parentId": "5e8d963642bd916bded4a8dc",
+			"order": 31,
+			"status": "release",
+			"mustdo": false,
+			"description": "\n\u5c3d\u7ba1Java\u63d0\u4f9b\u4e86\u8bb8\u591a\u4e0d\u540c\u7684\u65b9\u6cd5\u6765\u83b7\u53d6\u7528\u6237\u8f93\u5165\uff0c\u4f46Scanner\u5bf9\u8c61\u662f\u6700\u5e38\u89c1\u7684\uff0c\u4e5f\u8bb8\u4e5f\u662f\u6700\u5bb9\u6613\u5b9e\u73b0\u7684\u3002\n\n\u5bfc\u5165Scanner\u7c7b\u4ee5\u4f7f\u7528Scanner\u5bf9\u8c61\uff0c\u5982\u4e0b\u6240\u793a:\n```java\nimport java.util.Scanner; \n```\n\u4e3a\u4e86\u4f7f\u7528Scanner\u7c7b\uff0c\u8bf7\u4f7f\u7528\u4ee5\u4e0b\u8bed\u6cd5\u521b\u5efa\u8be5\u7c7b\u7684\u5b9e\u4f8b:\n```java\nScanner input = new Scanner\uff08System.in); \n```\n\n\u73b0\u5728\uff0c\u60a8\u53ef\u4ee5\u8bfb\u53d6\u7528\u6237\u8f93\u5165\u7684\u5404\u79cd\u8f93\u5165\u6570\u636e\u3002\u4e0b\u9762\u662f\u4e00\u4e9b\u901a\u8fc7Scanner\u7c7b\u53ef\u7528\u7684\u65b9\u6cd5\uff1a\n\n* Read an int :nextInt()\n* Read a float:nextFloat()\n* Read a double:nextDouble()\n* Read a complete line\uff1anextLine()\n* Read a word\uff1anext()\n\n\n### \u7528\u4e8e\u83b7\u53d6\u7528\u6237\u8f93\u5165\u7684\u7a0b\u5e8f\u793a\u4f8b\uff1a\n```java\nimport java.util.Scanner; \n\nclass Programe{ \n  public static  void main(String [] args){ \n    Scanner input = new Scanner(System.in); \n    System.out.println\uff08input.nextLine());        \n  } \n}\n```",
+			"orgId": 1,
+			"minutes": 5,
+			"existence": true,
+			"creator": 1,
+			"createdAt": "2021-02-09T05:24:10.000Z",
+			"updater": 480,
+			"updatedAt": "2021-06-10T07:49:45.000Z",
+			"exerciseNums": 0,
+			"scores": 0,
+			"level": 2,
+			"sourceResId": null,
+			"elements": [],
+			"files": [],
+			"knowledge": {
+				"content": "",
+				"type": ""
+			},
+			"exercises": {}
+		},
+		"setting": {
+			"lessonId": "5e43d40c4f503a0470aa80a1",
+			"status": "release",
+			"isAllowViewSolution": false,
+			"isAllowViewHint": false
+		},
+		"learnData": {
+			"aced": false,
+			"commitNum": 0,
+			"correct": false,
+			"correctAt": null,
+			"lessonId": "5e43d40c4f503a0470aa80a1",
+			"lessonPath": "5e43d40c4f503a0470aa80a1",
+			"score": 0,
+			"duration": 16937,
+			"timeConsuming": null,
+			"correctNum": null
+		},
+		"exercisesLearnData": {},
+		"documentLearnData": {},
+		"videoLearnData": {}
+	}
+}
