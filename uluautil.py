@@ -169,18 +169,20 @@ class misson():
 		return False
 
 	def nextmisson(self):
-		if self._webdriverObj:
-			if self.missonmatched():
-				nextBtn = self._webdriverObj.find_element(
-				    by="xpath", value="/html/body/div[1]/div/div/div[1]/div[2]/div/button[3]")
-				nextBtn.click()
+		if self.missonmatched():
+			if self._webdriverObj:
+				if self.missonmatched():
+					nextBtn = self._webdriverObj.find_element(
+					    by="xpath", value="/html/body/div[1]/div/div/div[1]/div[2]/div/button[3]")
+					nextBtn.click()
 
 	def learn(self):
-		if self.isLearned():
-			print("arlready learned skip")
+		if self.missonmatched():
+			if self.isLearned():
+				print("arlready learned skip")
+				self.nextmisson()
+			print("unsupport type skip it")
 			self.nextmisson()
-		print("unsupport type skip it")
-		self.nextmisson()
 
 
 class video(misson):
