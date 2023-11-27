@@ -105,14 +105,6 @@ def ms2time(msint: int) -> str:
 
 
 def pushmisson(browser: webdriver.Chrome, lessonobj: ulua.lesson):
-	# missonObj = lessonobj.getmissonObj(webdriverObj=browser)
-
-	# if missonObj.missonmatched():
-	# 	missonObj.learn()
-	# else:
-	# 	print("misson id{} out of date skip".format(missonObj.getlessonId()))
-
-	# Todo:fix webdriver multproc
 
 	missonObj = lessonobj.getmissonObj(webdriverObj=browser)
 	if missonObj.missonmatched():

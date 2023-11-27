@@ -1,6 +1,7 @@
 import json
 import time
 from selenium import webdriver
+from selenium.webdriver.common.by import By
 
 
 class perfLog:
@@ -126,7 +127,9 @@ class lesson:
 
 	def getmissonObj(self, webdriverObj: webdriver.Chrome):
 		if self.getlessontype() in ["video", "document"]:
-			return video(self._resbody, webdriverObj=webdriverObj)
+			return videoAndDoc(self._resbody, webdriverObj=webdriverObj)
+		elif self.getlessontype() in ["single-choice", "multiple-choice", "judgment"]:
+			return Choice(self._resbody, webdriverObj=webdriverObj)
 		else:
 			return misson(self._resbody, webdriverObj=webdriverObj)
 
@@ -159,6 +162,9 @@ class misson():
 	def getReqduration(self):
 		return lesson(resbody=self._resbody).getReqduration()
 
+	def getresourceId(self) -> str:
+		return self._resbody["data"]["lesson"]["elements"][0]["resourceId"]
+
 	def isLearned(self) -> bool:
 		return lesson(resbody=self._resbody).isLearned()
 
@@ -176,6 +182,14 @@ class misson():
 					    by="xpath", value="/html/body/div[1]/div/div/div[1]/div[2]/div/button[3]")
 					nextBtn.click()
 
+	def commit(self):
+		if self._webdriverObj:
+			comitBtn = self._webdriverObj.find_element(
+			    By.CSS_SELECTOR,
+			    "[class='font-medium whitespace-nowrap shadow-sm rounded border focus:ring-2 focus:outline-none border-transparent text-white bg-success-600 hover:bg-success-700 focus:ring-primary-500 focus:ring-offset-1 px-4 py-2 text-base inline-flex items-center justify-center']"
+			)
+			comitBtn.click()
+
 	def learn(self):
 		if self.missonmatched():
 			if self.isLearned():
@@ -185,7 +199,7 @@ class misson():
 			self.nextmisson()
 
 
-class video(misson):
+class videoAndDoc(misson):
 
 	def learn(self):
 		if self.missonmatched():
@@ -200,4 +214,29 @@ class video(misson):
 				duration = self.getReqduration() + 1
 			logPrint("正在看视频/文档：{},时长{}mins".format(self.getlessontitle(), duration))
 			time.sleep(duration * 60)
+			self.nextmisson()
+
+
+class Choice(misson):
+
+	def learn(self):
+		if self.missonmatched():
+			answerid = []
+			for opt in self._resbody["data"]["lesson"]["exercises"][
+			    self.getresourceId()]["options"]:
+				if opt["isCorrect"]:
+					answerid.append(opt["id"])
+					print("正确选项：", opt["option"])
+			if self.isLearned():
+				print("arlready learned skip")
+				self.nextmisson()
+				return None
+			if self._webdriverObj:
+				self._webdriverObj.implicitly_wait(2)
+				anserList = self._webdriverObj.find_elements(By.CSS_SELECTOR, ".text-xl.leading-12")
+				for opt in anserList:
+					if opt.get_attribute("value") in answerid:
+						opt.click()
+				self.commit()
+			time.sleep(5)
 			self.nextmisson()
