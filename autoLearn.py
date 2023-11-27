@@ -8,28 +8,39 @@ import uluautil as ulua
 
 testdataPath = "./autodata"
 logpath = "./log.txt"
+chromedriverPath = "./chromedriver.exe"
 
-os.chdir(os.path.dirname(os.path.abspath(__file__)))
-testdataPath = os.path.abspath(testdataPath)
-if os.path.exists(logpath):
-	os.remove(logpath)
-# initize driver
-service = Service(executable_path="./chromedriver.exe")
-chopt = webdriver.ChromeOptions()
-chopt.binary_location = "C:\\Program Files\\BraveSoftware\\Brave-Browser\\Application\\brave.exe"
-#屏蔽webdrive检测
-chopt.add_argument("--disable-web-security")
-chopt.add_argument("--allow-running-insecure-content")
-# 退出不关闭浏览器
-chopt.add_experimental_option("detach", True)
-# 关闭webdriver log输出
-chopt.add_experimental_option('excludeSwitches', ['enable-logging'])
-# 开启性能日志
-chopt.add_experimental_option("perfLoggingPrefs", {'enableNetwork': True})
-chopt.set_capability("goog:loggingPrefs", {"performance": "ALL"})
-# 使用默认用户数据
-chopt.add_argument("--user-data-dir=" + testdataPath)
-# chopt.add_argument("--user-data-dir=C:/Users/ulua/AppData/Local/BraveSoftware/Brave-Browser/User Data")
+
+def initize(browserdataPath: str, chromedriverPath: str):
+	"""
+	use relative path to script
+	"""
+	global logpath
+	os.chdir(os.path.dirname(os.path.abspath(__file__)))
+	browserdataPath = os.path.abspath(browserdataPath)
+	chromedriverPath = os.path.abspath(chromedriverPath)
+	if os.path.exists(logpath):
+		os.remove(logpath)
+
+	# initize driver
+	service = Service(executable_path=chromedriverPath)
+	chopt = webdriver.ChromeOptions()
+	chopt.binary_location = "C:\\Program Files\\BraveSoftware\\Brave-Browser\\Application\\brave.exe"
+	#屏蔽webdrive检测
+	chopt.add_argument("--disable-web-security")
+	chopt.add_argument("--allow-running-insecure-content")
+	# 退出不关闭浏览器
+	chopt.add_experimental_option("detach", True)
+	# 关闭webdriver log输出
+	chopt.add_experimental_option('excludeSwitches', ['enable-logging'])
+	# 开启性能日志
+	chopt.add_experimental_option("perfLoggingPrefs", {'enableNetwork': True})
+	chopt.set_capability("goog:loggingPrefs", {"performance": "ALL"})
+	# 使用默认用户数据
+	chopt.add_argument("--user-data-dir=" + browserdataPath)
+	# 启动浏览器
+	webdriverObj = webdriver.Chrome(chopt, service=service)
+	return webdriverObj
 
 
 def logtoFile(str1: str):
@@ -39,8 +50,7 @@ def logtoFile(str1: str):
 	file1.close()
 
 
-def main():
-	browser = webdriver.Chrome(chopt)
+def main(browser: webdriver.Chrome):
 	#屏蔽webdrive检测
 	browser.execute_cdp_cmd("Page.addScriptToEvaluateOnNewDocument", {
 	    "source":
@@ -122,5 +132,4 @@ def pushmisson(browser: webdriver.Chrome, lessonobj: ulua.lesson):
 
 
 if __name__ == "__main__":
-
-	main()
+	main(initize(testdataPath, chromedriverPath))
