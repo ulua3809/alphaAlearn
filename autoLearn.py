@@ -51,18 +51,7 @@ def logtoFile(str1: str):
 
 
 def main(browser: webdriver.Chrome):
-	#屏蔽webdrive检测
-	browser.execute_cdp_cmd("Page.addScriptToEvaluateOnNewDocument", {
-	    "source":
-	    """
-	Object.defineProperty(navigator, 'webdriver', {
-	get: () => undefined
-	})
-	"""
-	})
-
 	browser.get("https://sxgxy.alphacoding.cn/")
-
 	while True:
 		log = browser.get_log('performance')
 		for entry in log:
@@ -75,25 +64,20 @@ def main(browser: webdriver.Chrome):
 def matchlog(logobj: ulua.perfLog, browser: webdriver.Chrome):
 	if logobj.getLogMethod() == "Network.responseReceived":
 		if logobj.getLogType() == "XHR":
-			# print("-" * 50)
-			# print("url:", logobj.getUrl())
-			# print("requestId:", logobj.getReqId())
+			# print("-" * 50, "\nurl:{}\nrequestId:{}".format(logobj.getUrl(), logobj.getReqId()))
 			if "recordStudyTime" in logobj.getUrl():
-				Stime = ulua.stuTime(
-				    browser.execute_cdp_cmd('Network.getRequestPostData',
-				                            {'requestId': logobj.getReqId()}))
-				ulua.logPrint("时长上报成功，开始:{},时长:{},课程id:{},题目类型:{}".format(
-				    Stime.getStartTime(), ms2time(Stime.getDuration()), Stime.getlessonId(),
-				    Stime.getlessonType()))
+				Stime = ulua.stuTime(browser.execute_cdp_cmd('Network.getRequestPostData', {'requestId': logobj.getReqId()}))
+				ulua.logPrint("时长上报成功，开始:{},时长:{},课程id:{},题目类型:{}".format(Stime.getStartTime(), ms2time(Stime.getDuration()),
+				                                                          Stime.getlessonId(), Stime.getlessonType()))
 			elif "detail" in logobj.getUrl():
-				lessonobj = ulua.lesson(
-				    browser.execute_cdp_cmd('Network.getResponseBody',
-				                            {'requestId': logobj.getReqId()}))
+				lessonobj = ulua.lesson(browser.execute_cdp_cmd('Network.getResponseBody', {'requestId': logobj.getReqId()}))
 				logtoFile(json.dumps(lessonobj.getresBody()))
-				print("标题:{},类型:{},课程id:{},已学时长:{},需要时长:{}mins,完成状态{}".format(
-				    lessonobj.getlessontitle(), lessonobj.getlessontype(), lessonobj.getlessonId(),
-				    ms2time(lessonobj.getLearneddur()), lessonobj.getReqduration(),
-				    lessonobj.isLearned()))
+				ulua.logPrint("标题:{},类型:{},课程id:{},已学时长:{},需要时长:{}mins,完成状态{}".format(lessonobj.getlessontitle(),
+				                                                                      lessonobj.getlessontype(),
+				                                                                      lessonobj.getlessonId(),
+				                                                                      ms2time(lessonobj.getLearneddur()),
+				                                                                      lessonobj.getReqduration(),
+				                                                                      lessonobj.isLearned()))
 				pushmisson(browser, lessonobj)
 
 
@@ -108,10 +92,7 @@ def pushmisson(browser: webdriver.Chrome, lessonobj: ulua.lesson):
 
 	missonObj = lessonobj.getmissonObj(webdriverObj=browser)
 	if missonObj.missonmatched():
-		missonThread = threading.Thread(target=missonObj.learn,
-		                                name="lessonId {}".format(missonObj.getlessonId()),
-		                                args=(),
-		                                daemon=True)
+		missonThread = threading.Thread(target=missonObj.learn, name="lessonId {}".format(missonObj.getlessonId()), daemon=True)
 		missonThread.start()
 	else:
 		print("misson id{} out of date skip".format(missonObj.getlessonId()))

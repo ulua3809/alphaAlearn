@@ -1,982 +1,507 @@
 {
-	"ok": true,
-	"data": {
-		"lesson": {
-			"id": 5246,
-			"lessonId": "5e85e4aec67ed52365945e34",
-			"lessonPath": "chou-xiang-lei-Monster",
-			"coursewareId": "60221c7a9deec539c1367f8b",
-			"title": "4、抽象类Monster",
-			"type": "single",
-			"parentId": "5e8d963642bd916bded4a8e0",
-			"order": 137,
-			"status": "release",
-			"mustdo": false,
-			"description": "",
-			"orgId": 1,
-			"minutes": 5,
-			"existence": true,
-			"creator": 1,
-			"createdAt": "2021-02-09T05:24:10.000Z",
-			"updater": 480,
-			"updatedAt": "2021-06-10T07:49:45.000Z",
-			"exerciseNums": 1,
-			"scores": 10,
-			"level": 2,
-			"sourceResId": null,
-			"elements": [
-				{
-					"exerciseType": "programming",
-					"resourceId": "5e86b3b0c67ed52365945fc3",
-					"rid": null,
-					"score": 10,
-					"title": "抽象类Monster",
-					"type": "exercise"
-				}
-			],
-			"files": [],
-			"knowledge": {
-				"content": "",
-				"type": ""
-			},
-			"exercises": {
-				"5e86b3b0c67ed52365945fc3": {
-					"_id": "6491150517d2f51404213278",
-					"artificialJudge": false,
-					"title": "抽象类Monster",
-					"description": "",
-					"resId": "5e86b3b0c67ed52365945fc3",
-					"question": "### 题目描述\n\n我们定义一个可攻击的怪物`Monster`类，包含了一个`attack`的抽象方法。子类提供其具体实现，如下面类图所示。\n\n![IBDK2SZ72UNT.png](/api/resource/v2/exercises/60bde82db81724390b9b94ca/f/I0PS1DYCSRRG)\n<details>\n  <summary><font >点击查看UML类图说明</font></summary>\n  \n|  图标| 说明 |\n| :-----------: | :-------------: |\n| <img src=\"/api/resource/v2/cw/60221c7a9deec539c1367f8b/f/GFAFWFG4U2YQ\" alt=\"类名\" style=\"zoom:50%;\" /> |  表示类，绿色三角表示可以运行。 |\n| <img src=\"/api/resource/v2/cw/60221c7a9deec539c1367f8b/f/OID337MN273D\" alt=\"抽象类\" style=\"zoom:50%;\" /> | 抽象类 |\n| <img src=\"/api/resource/v2/cw/60221c7a9deec539c1367f8b/f/S442MC06B267\" alt=\"字段名\" style=\"zoom:50%;\" /> |  成员变量  |\n| <img src=\"/api/resource/v2/cw/60221c7a9deec539c1367f8b/f/BMGNOBQ4Q9QR\" alt=\"方法名\" style=\"zoom:50%;\" /> | 表示方法  |\n| <img src=\"/api/resource/v2/cw/60221c7a9deec539c1367f8b/f/HS0E2UGMFKBH\" alt=\"抽象方法\" style=\"zoom:50%;\" /> | 抽象方法 |\n| <img src=\"/api/resource/v2/cw/60221c7a9deec539c1367f8b/f/GP1C517V1PVL\" alt=\"public\" style=\"zoom:50%;\" /> |  修饰符：public |\n| <img src=\"/api/resource/v2/cw/60221c7a9deec539c1367f8b/f/A4D29VPFEYLF\" alt=\"private\" style=\"zoom:50%;\" /> | 修饰符：private |\n| <img src=\"/api/resource/v2/cw/60221c7a9deec539c1367f8b/f/W4ISZO5SLG0V\" alt=\"继承关系\" style=\"zoom:50%;\" /> | 蓝色实现箭头，表示继承关系，箭头指向父类 |\n</details>\n\n**Monster**\n\n- 属性\n    - name：怪物名称。\n- 构造方法\n    - Monster(String name)：设置怪物名称。\n- 方法\n    - attack()：攻击能力。\n\n**FireMonster**\n\n- 方法\n    - attack()：返回 \"Attack with fire!\"。\n    \n**WaterMonster**\n\n- 方法\n    - attack()：返回 \"Attack with water!\"。\n    \n**StoneMonster**\n\n- 方法\n    - attack()：返回 \"Attack with stones!\"。\n    \n### 题目要求\n\n    根据题目描述及类图，完成抽象类Monster及其子类。\n    \n### 判题说明\n\n本题考查面向对象相关知识，可以自行在Main方法中进行调试，判题不做要求。",
-					"exerciseType": "",
-					"subType": "programming",
-					"hint": "",
-					"precommonName": "",
-					"tags": [],
-					"errorHint": "",
-					"passHint": "",
-					"precommonCode": [
-						{
-							"fileName": "Monster.java",
-							"type": "java",
-							"code": "public class Monster {\n    //请在此处开始编写你的代码\n}",
-							"main": false,
-							"readOnly": false,
-							"hide": false,
-							"fileId": "jvt6s47bgxp8"
-						},
-						{
-							"fileName": "FireMonster.java",
-							"type": "java",
-							"code": "public class FireMonster{\n    //请在此处开始编写你的代码\n}",
-							"main": false,
-							"readOnly": false,
-							"hide": false,
-							"fileId": "wn9zfg5yyu6j"
-						},
-						{
-							"fileName": "StoneMonster.java",
-							"type": "java",
-							"code": "public class StoneMonster{\n    //请在此处开始编写你的代码\n}",
-							"main": false,
-							"readOnly": false,
-							"hide": false,
-							"fileId": "g46i136i8dvx"
-						},
-						{
-							"fileName": "WaterMonster.java",
-							"type": "java",
-							"code": "public class WaterMonster{\n    //请在此处开始编写你的代码\n}",
-							"main": false,
-							"readOnly": false,
-							"hide": false,
-							"fileId": "bu9nxz27w2em"
-						},
-						{
-							"fileName": "TestMonster.java",
-							"type": "java",
-							"code": "public class TestMonster {\n    public static void main(String[] args) {\n         //可以自行在Main方法中进行调试\n    }\n}",
-							"main": true,
-							"readOnly": false,
-							"hide": false,
-							"fileId": "dob1hx0zi8jw"
-						}
-					],
-					"difficult": 1,
-					"codeSolutions": [
-						{
-							"fileName": "Monster.java",
-							"type": "java",
-							"code": "/**\n * The superclass Monster defines the expected common behaviors for its subclasses.\n */\npublic abstract class Monster {\n    // private instance variable\n    private String name;\n\n    /** Constructs a Monster instance with the given name */\n    public Monster(String name) {\n        this.name = name;\n    }\n\n    /** Defines a common behavior called attack() for all its subclasses */\n    public abstract String attack();\n}",
-							"main": false,
-							"fileId": "n8a1ornaz78l"
-						},
-						{
-							"fileName": "FireMonster.java",
-							"type": "java",
-							"code": "public class FireMonster extends Monster {\n    /** Constructs a FireMonster with the given name */\n    public FireMonster(String name) {\n        super(name);\n    }\n    /** Subclass provides actual implementation for attack() */\n    @Override\n    public String attack() {\n        return \"Attack with fire!\";\n    }\n}",
-							"main": false,
-							"fileId": "apqonp9wlqf3"
-						},
-						{
-							"fileName": "StoneMonster.java",
-							"type": "java",
-							"code": "public class StoneMonster extends Monster {\n    /** Constructs a StoneMonster instance with the given name */\n    public StoneMonster(String name) {\n        super(name);\n    }\n    /** Subclass provides actual implementation for attack() */\n    @Override\n    public String attack() {\n        return \"Attack with stones!\";\n    }\n}",
-							"main": false,
-							"fileId": "hkep5vsjrhu4"
-						},
-						{
-							"fileName": "WaterMonster.java",
-							"type": "java",
-							"code": "public class WaterMonster extends Monster {\n    /** Constructs a WaterMonster instance with the given name */\n    public WaterMonster(String name) {\n        super(name);\n    }\n    /** Subclass provides actual implementation for attack() */\n    @Override\n    public String attack() {\n        return \"Attack with water!\";\n    }\n}",
-							"main": false,
-							"fileId": "rs2iw4qlfqe4"
-						},
-						{
-							"fileName": "TestMonster.java",
-							"type": "java",
-							"code": "public class TestMonster {\n    public static void main(String[] args) {\n        // Program at the specification defined in the superclass/interface.\n        // Declare instances of the superclass, substituted by subclasses.\n        Monster m1 = new FireMonster(\"r2u2\");   // upcast\n        Monster m2 = new WaterMonster(\"u2r2\");  // upcast\n        Monster m3 = new StoneMonster(\"r2r2\");  // upcast\n\n        // Invoke the actual implementation\n        System.out.println(m1.attack());  // Run FireMonster's attack()\n        //Attack with fire!\n        System.out.println(m2.attack());  // Run WaterMonster's attack()\n        //Attack with water!\n        System.out.println(m3.attack());  // Run StoneMonster's attack()\n        //Attack with stones!\n\n        // m1 dies, generate a new instance and re-assign to m1.\n        m1 = new StoneMonster(\"a2b2\");  // upcast\n        System.out.println(m1.attack());  // Run StoneMonster's attack()\n        //Attack with stones!\n\n    }\n}",
-							"main": true,
-							"fileId": "zj6m1wihlv5t"
-						}
-					],
-					"createdAt": "2023-06-20T02:55:01.545Z",
-					"creator": 1,
-					"orgId": 1,
-					"note": "",
-					"errorNum": 1,
-					"notes": "",
-					"tasks": [
-						{
-							"require": "按照题目要求定义抽象类及其子类",
-							"showNum": "1",
-							"judges": [
-								{
-									"id": "5e872b69ad8c83e2f68b0ac7",
-									"mode": "junit_match",
-									"scorePercentage": "1",
-									"presetInput": "",
-									"precommon": "",
-									"replace_main": "",
-									"conveyData": "",
-									"presetBack": "",
-									"functionsCall": "",
-									"presetOutput": "",
-									"rule": "import cn.alphacoding.judge.Checker;\nimport org.junit.FixMethodOrder;\nimport org.junit.Test;\nimport org.apache.commons.lang3.ClassUtils;\nimport org.junit.Assert;\nimport org.junit.runners.MethodSorters;\n\nimport java.lang.reflect.Modifier;\nimport cn.alphacoding.judge.JavaExerciseTestBase;\n\n/**\n * 任务1 裁判\n */\n@FixMethodOrder(MethodSorters.NAME_ASCENDING)\npublic class TestJunit   extends JavaExerciseTestBase{\n\n\n    @Test\n    public void test_00() {\n        Checker c = new Checker();\n        c.checkType(getFullClassName(\"Monster\"));\n        Class MonsterClass = c.checkType(getFullClassName(\"Monster\")).getClazz();\n        Boolean MonsterClassA = Modifier.isAbstract(MonsterClass.getModifiers());\n        Assert.assertEquals(\"请检查父类Monster是否为抽象类\",true,MonsterClassA);\n    \n    }\n\n}\n\n\n",
-									"errorReason": "测试用例检查失败，实际输出不正确，与期望不符",
-									"feedback": "",
-									"hideInfo": "allDisplay",
-									"ruleFileName": "TestJunit.java"
-								},
-								{
-									"id": "e7cl6sak9j",
-									"mode": "junit_match",
-									"scorePercentage": "1",
-									"presetInput": "",
-									"precommon": "",
-									"replace_main": "",
-									"conveyData": "",
-									"presetBack": "",
-									"functionsCall": "",
-									"presetOutput": "",
-									"rule": "import cn.alphacoding.judge.Checker;\nimport org.junit.FixMethodOrder;\nimport org.junit.Test;\nimport org.apache.commons.lang3.ClassUtils;\nimport org.junit.Assert;\nimport org.junit.runners.MethodSorters;\n\nimport java.lang.reflect.Modifier;\nimport cn.alphacoding.judge.JavaExerciseTestBase;\n\n/**\n * 任务1 裁判\n */\n@FixMethodOrder(MethodSorters.NAME_ASCENDING)\npublic class TestJunit03   extends JavaExerciseTestBase{\n\n\n    @Test\n    public void test_00() {\n        Checker c = new Checker();\n        c.checkType(getFullClassName(\"Monster\"));\n        c.checkType(getFullClassName(\"FireMonster\"));\n\n        Class MonsterClass = c.checkType(getFullClassName(\"Monster\")).getClazz();\n        Class FireMonsterClass = c.checkType(getFullClassName(\"FireMonster\")).getClazz();\n\n        boolean fireMonster = ClassUtils.isAssignable(FireMonsterClass, MonsterClass);\n        Assert.assertEquals(\"请检查FireMonster类继承关系\",true,fireMonster);\n\n    \n    }\n\n}\n\n\n",
-									"errorReason": "测试用例检查失败，实际输出不正确，与期望不符",
-									"feedback": "",
-									"hideInfo": "allDisplay",
-									"ruleFileName": "TestJunit03.java"
-								},
-								{
-									"id": "mieexdu9vr",
-									"mode": "junit_match",
-									"scorePercentage": "1",
-									"presetInput": "",
-									"precommon": "",
-									"replace_main": "",
-									"conveyData": "",
-									"presetBack": "",
-									"functionsCall": "",
-									"presetOutput": "",
-									"rule": "import cn.alphacoding.judge.Checker;\nimport org.junit.FixMethodOrder;\nimport org.junit.Test;\nimport org.apache.commons.lang3.ClassUtils;\nimport org.junit.Assert;\nimport org.junit.runners.MethodSorters;\n\nimport java.lang.reflect.Modifier;\nimport cn.alphacoding.judge.JavaExerciseTestBase;\n\n/**\n * 任务1 裁判\n */\n@FixMethodOrder(MethodSorters.NAME_ASCENDING)\npublic class TestJunit04   extends JavaExerciseTestBase{\n\n\n    @Test\n    public void test_00() {\n        Checker c = new Checker();\n        c.checkType(getFullClassName(\"Monster\"));\n        c.checkType(getFullClassName(\"StoneMonster\"));\n\n        Class MonsterClass = c.checkType(getFullClassName(\"Monster\")).getClazz();\n        Class StoneMonsterClass = c.checkType(getFullClassName(\"StoneMonster\")).getClazz();\n        \n        boolean stoneMonster = ClassUtils.isAssignable(StoneMonsterClass, MonsterClass);\n        Assert.assertEquals(\"请检查StoneMonster类继承关系\",true,stoneMonster);\n\n    \n    }\n\n}\n\n\n",
-									"errorReason": "测试用例检查失败，实际输出不正确，与期望不符",
-									"feedback": "",
-									"hideInfo": "allDisplay",
-									"ruleFileName": "TestJunit04.java"
-								},
-								{
-									"id": "ptnxa79v3q",
-									"mode": "junit_match",
-									"scorePercentage": "1",
-									"presetInput": "",
-									"precommon": "",
-									"replace_main": "",
-									"conveyData": "",
-									"presetBack": "",
-									"functionsCall": "",
-									"presetOutput": "",
-									"rule": "import cn.alphacoding.judge.Checker;\nimport org.junit.FixMethodOrder;\nimport org.junit.Test;\nimport org.apache.commons.lang3.ClassUtils;\nimport org.junit.Assert;\nimport org.junit.runners.MethodSorters;\n\nimport java.lang.reflect.Modifier;\nimport cn.alphacoding.judge.JavaExerciseTestBase;\n\n/**\n * 任务1 裁判\n */\n@FixMethodOrder(MethodSorters.NAME_ASCENDING)\npublic class TestJunit05   extends JavaExerciseTestBase{\n\n\n    @Test\n    public void test_00() {\n        Checker c = new Checker();\n        c.checkType(getFullClassName(\"Monster\"));\n        c.checkType(getFullClassName(\"WaterMonster\"));\n\n        Class MonsterClass = c.checkType(getFullClassName(\"Monster\")).getClazz();\n        Class WaterMonsterClass = c.checkType(getFullClassName(\"WaterMonster\")).getClazz();\n        \n        boolean waterMonster = ClassUtils.isAssignable(WaterMonsterClass, MonsterClass);\n        Assert.assertEquals(\"请检查WaterMonster类继承关系\",true,waterMonster);\n\n    \n    }\n\n}\n\n\n",
-									"errorReason": "测试用例检查失败，实际输出不正确，与期望不符",
-									"feedback": "",
-									"hideInfo": "allDisplay",
-									"ruleFileName": "TestJunit05.java"
-								}
-							],
-							"id": 0
-						},
-						{
-							"require": "根据题目要求定义变量和方法",
-							"showNum": "1",
-							"judges": [
-								{
-									"id": "5e872bc4ad8c83e2f68b0ac8",
-									"mode": "junit_match",
-									"scorePercentage": "1",
-									"presetInput": "",
-									"precommon": "",
-									"replace_main": "",
-									"conveyData": "",
-									"presetBack": "",
-									"functionsCall": "",
-									"presetOutput": "",
-									"rule": "import cn.alphacoding.judge.Checker;\nimport cn.alphacoding.judge.ErrorCallback;\nimport org.junit.FixMethodOrder;\nimport org.junit.Assert;\nimport org.apache.commons.lang3.ClassUtils;\nimport org.junit.Test;\nimport org.junit.runners.MethodSorters;\nimport cn.alphacoding.judge.JavaExerciseTestBase;\n\n/**\n * 任务1 裁判\n */\n@FixMethodOrder(MethodSorters.NAME_ASCENDING)\npublic class TestJunit01   extends JavaExerciseTestBase{\n\n\n    @Test\n    public void test_00() {\n        Checker c = new Checker();\n        c.checkType(getFullClassName(\"Monster\")).checkField(\"name\",\"请在Monster类中定义属性name\");\n    \n    }\n\n}\n\n\n",
-									"errorReason": "测试用例检查失败，实际输出不正确，与期望不符",
-									"feedback": "",
-									"hideInfo": "allDisplay",
-									"ruleFileName": "TestJunit01.java"
-								},
-								{
-									"id": "plv3m9m21b",
-									"mode": "junit_match",
-									"scorePercentage": "1",
-									"presetInput": "",
-									"precommon": "",
-									"replace_main": "",
-									"conveyData": "",
-									"presetBack": "",
-									"functionsCall": "",
-									"presetOutput": "",
-									"rule": "import cn.alphacoding.judge.Checker;\nimport cn.alphacoding.judge.ErrorCallback;\nimport org.junit.FixMethodOrder;\nimport org.junit.Assert;\nimport org.apache.commons.lang3.ClassUtils;\nimport org.junit.Test;\nimport org.junit.runners.MethodSorters;\nimport cn.alphacoding.judge.JavaExerciseTestBase;\n\n/**\n * 任务1 裁判\n */\n@FixMethodOrder(MethodSorters.NAME_ASCENDING)\npublic class TestJunit06   extends JavaExerciseTestBase{\n\n\n    @Test\n    public void test_00() {\n        Checker c = new Checker();\n        c.checkType(getFullClassName(\"Monster\"))\n            .checkCtor(\"未找到这样的构造方法：Monster(String)\",classes(String.class));\n    \n    }\n\n}\n\n\n",
-									"errorReason": "测试用例检查失败，实际输出不正确，与期望不符",
-									"feedback": "",
-									"hideInfo": "allDisplay",
-									"ruleFileName": "TestJunit06.java"
-								},
-								{
-									"id": "ad3i0gx6es",
-									"mode": "junit_match",
-									"scorePercentage": "1",
-									"presetInput": "",
-									"precommon": "",
-									"replace_main": "",
-									"conveyData": "",
-									"presetBack": "",
-									"functionsCall": "",
-									"presetOutput": "",
-									"rule": "import cn.alphacoding.judge.Checker;\nimport cn.alphacoding.judge.ErrorCallback;\nimport org.junit.FixMethodOrder;\nimport org.junit.Assert;\nimport org.apache.commons.lang3.ClassUtils;\nimport org.junit.Test;\nimport org.junit.runners.MethodSorters;\nimport cn.alphacoding.judge.JavaExerciseTestBase;\n\n/**\n * 任务1 裁判\n */\n@FixMethodOrder(MethodSorters.NAME_ASCENDING)\npublic class TestJunit07   extends JavaExerciseTestBase{\n\n\n    @Test\n    public void test_00() {\n        Checker c = new Checker();\n        c.checkType(getFullClassName(\"Monster\"))\n            .checkMethod(\"attack\",\"未在Monster类中找到这样的方法:attack()\");\n    \n    }\n\n}\n\n\n",
-									"errorReason": "测试用例检查失败，实际输出不正确，与期望不符",
-									"feedback": "",
-									"hideInfo": "allDisplay",
-									"ruleFileName": "TestJunit07.java"
-								},
-								{
-									"id": "btcahjqlri",
-									"mode": "junit_match",
-									"scorePercentage": "1",
-									"presetInput": "",
-									"precommon": "",
-									"replace_main": "",
-									"conveyData": "",
-									"presetBack": "",
-									"functionsCall": "",
-									"presetOutput": "",
-									"rule": "import cn.alphacoding.judge.Checker;\nimport cn.alphacoding.judge.ErrorCallback;\nimport org.junit.FixMethodOrder;\nimport org.junit.Assert;\nimport org.apache.commons.lang3.ClassUtils;\nimport org.junit.Test;\nimport org.junit.runners.MethodSorters;\nimport cn.alphacoding.judge.JavaExerciseTestBase;\n\n/**\n * 任务1 裁判\n */\n@FixMethodOrder(MethodSorters.NAME_ASCENDING)\npublic class TestJunit08   extends JavaExerciseTestBase{\n\n\n    @Test\n    public void test_00() {\n        Checker c = new Checker();\n        c.checkType(getFullClassName(\"FireMonster\")).checkCtor(\"未找到这样的构造方法：FireMonster(String)\",classes(String.class));\n    \n    }\n\n}\n\n\n",
-									"errorReason": "测试用例检查失败，实际输出不正确，与期望不符",
-									"feedback": "",
-									"hideInfo": "allDisplay",
-									"ruleFileName": "TestJunit08.java"
-								},
-								{
-									"id": "a2q0p3a38p",
-									"mode": "junit_match",
-									"scorePercentage": "1",
-									"presetInput": "",
-									"precommon": "",
-									"replace_main": "",
-									"conveyData": "",
-									"presetBack": "",
-									"functionsCall": "",
-									"presetOutput": "",
-									"rule": "import cn.alphacoding.judge.Checker;\nimport cn.alphacoding.judge.ErrorCallback;\nimport org.junit.FixMethodOrder;\nimport org.junit.Assert;\nimport org.apache.commons.lang3.ClassUtils;\nimport org.junit.Test;\nimport org.junit.runners.MethodSorters;\nimport cn.alphacoding.judge.JavaExerciseTestBase;\n\n/**\n * 任务1 裁判\n */\n@FixMethodOrder(MethodSorters.NAME_ASCENDING)\npublic class TestJunit09   extends JavaExerciseTestBase{\n\n\n    @Test\n    public void test_00() {\n        Checker c = new Checker();\n        c.checkType(getFullClassName(\"FireMonster\")).checkMethod(\"attack\",\"未在FireMonster类中找到这样的方法:attack()\");\n    \n    }\n\n}\n\n\n",
-									"errorReason": "测试用例检查失败，实际输出不正确，与期望不符",
-									"feedback": "",
-									"hideInfo": "allDisplay",
-									"ruleFileName": "TestJunit09.java"
-								},
-								{
-									"id": "vemvgmdesg",
-									"mode": "junit_match",
-									"scorePercentage": "1",
-									"presetInput": "",
-									"precommon": "",
-									"replace_main": "",
-									"conveyData": "",
-									"presetBack": "",
-									"functionsCall": "",
-									"presetOutput": "",
-									"rule": "import cn.alphacoding.judge.Checker;\nimport cn.alphacoding.judge.ErrorCallback;\nimport org.junit.FixMethodOrder;\nimport org.junit.Assert;\nimport org.apache.commons.lang3.ClassUtils;\nimport org.junit.Test;\nimport org.junit.runners.MethodSorters;\nimport cn.alphacoding.judge.JavaExerciseTestBase;\n\n/**\n * 任务1 裁判\n */\n@FixMethodOrder(MethodSorters.NAME_ASCENDING)\npublic class TestJunit10   extends JavaExerciseTestBase{\n\n\n    @Test\n    public void test_00() {\n        Checker c = new Checker();\n        c.checkType(getFullClassName(\"StoneMonster\")).checkCtor(\"未找到这样的构造方法：StoneMonster(String)\",classes(String.class));\n    \n    }\n\n}\n\n\n",
-									"errorReason": "测试用例检查失败，实际输出不正确，与期望不符",
-									"feedback": "",
-									"hideInfo": "allDisplay",
-									"ruleFileName": "TestJunit10.java"
-								},
-								{
-									"id": "kbsb0ai0l7",
-									"mode": "junit_match",
-									"scorePercentage": "1",
-									"presetInput": "",
-									"precommon": "",
-									"replace_main": "",
-									"conveyData": "",
-									"presetBack": "",
-									"functionsCall": "",
-									"presetOutput": "",
-									"rule": "import cn.alphacoding.judge.Checker;\nimport cn.alphacoding.judge.ErrorCallback;\nimport org.junit.FixMethodOrder;\nimport org.junit.Assert;\nimport org.apache.commons.lang3.ClassUtils;\nimport org.junit.Test;\nimport org.junit.runners.MethodSorters;\nimport cn.alphacoding.judge.JavaExerciseTestBase;\n\n/**\n * 任务1 裁判\n */\n@FixMethodOrder(MethodSorters.NAME_ASCENDING)\npublic class TestJunit11   extends JavaExerciseTestBase{\n\n\n    @Test\n    public void test_00() {\n        Checker c = new Checker();\n        c.checkType(getFullClassName(\"StoneMonster\")).checkMethod(\"attack\",\"未在StoneMonster类中找到这样的方法:attack()\");\n    \n    }\n\n}\n\n\n",
-									"errorReason": "测试用例检查失败，实际输出不正确，与期望不符",
-									"feedback": "",
-									"hideInfo": "allDisplay",
-									"ruleFileName": "TestJunit11.java"
-								},
-								{
-									"id": "ae1f6i4gqk",
-									"mode": "junit_match",
-									"scorePercentage": "1",
-									"presetInput": "",
-									"precommon": "",
-									"replace_main": "",
-									"conveyData": "",
-									"presetBack": "",
-									"functionsCall": "",
-									"presetOutput": "",
-									"rule": "import cn.alphacoding.judge.Checker;\nimport cn.alphacoding.judge.ErrorCallback;\nimport org.junit.FixMethodOrder;\nimport org.junit.Assert;\nimport org.apache.commons.lang3.ClassUtils;\nimport org.junit.Test;\nimport org.junit.runners.MethodSorters;\nimport cn.alphacoding.judge.JavaExerciseTestBase;\n\n/**\n * 任务1 裁判\n */\n@FixMethodOrder(MethodSorters.NAME_ASCENDING)\npublic class TestJunit12   extends JavaExerciseTestBase{\n\n\n    @Test\n    public void test_00() {\n        Checker c = new Checker();\n        c.checkType(getFullClassName(\"WaterMonster\")).checkCtor(\"未找到这样的构造方法：WaterMonster(String)\",classes(String.class));\n    \n    }\n\n}\n\n\n",
-									"errorReason": "测试用例检查失败，实际输出不正确，与期望不符",
-									"feedback": "",
-									"hideInfo": "allDisplay",
-									"ruleFileName": "TestJunit12.java"
-								},
-								{
-									"id": "h4exso2dbd",
-									"mode": "junit_match",
-									"scorePercentage": "1",
-									"presetInput": "",
-									"precommon": "",
-									"replace_main": "",
-									"conveyData": "",
-									"presetBack": "",
-									"functionsCall": "",
-									"presetOutput": "",
-									"rule": "import cn.alphacoding.judge.Checker;\nimport cn.alphacoding.judge.ErrorCallback;\nimport org.junit.FixMethodOrder;\nimport org.junit.Assert;\nimport org.apache.commons.lang3.ClassUtils;\nimport org.junit.Test;\nimport org.junit.runners.MethodSorters;\nimport cn.alphacoding.judge.JavaExerciseTestBase;\n\n/**\n * 任务1 裁判\n */\n@FixMethodOrder(MethodSorters.NAME_ASCENDING)\npublic class TestJunit13   extends JavaExerciseTestBase{\n\n\n    @Test\n    public void test_00() {\n        Checker c = new Checker();\n        c.checkType(getFullClassName(\"WaterMonster\")).checkMethod(\"attack\",\"未在WaterMonster类中找到这样的方法:attack()\");\n    \n    }\n\n}\n\n\n",
-									"errorReason": "测试用例检查失败，实际输出不正确，与期望不符",
-									"feedback": "",
-									"hideInfo": "allDisplay",
-									"ruleFileName": "TestJunit13.java"
-								}
-							],
-							"id": 1
-						},
-						{
-							"require": "检查类及方法是否正确",
-							"showNum": "1",
-							"judges": [
-								{
-									"id": "5e873271ad8c83e2f68b0ac9",
-									"mode": "junit_match",
-									"scorePercentage": "1",
-									"presetInput": "",
-									"precommon": "",
-									"replace_main": "",
-									"conveyData": "",
-									"presetBack": "",
-									"functionsCall": "",
-									"presetOutput": "",
-									"rule": "import cn.alphacoding.judge.Checker;\nimport org.junit.Assert;\nimport org.junit.FixMethodOrder;\nimport org.junit.Test;\nimport org.junit.runners.MethodSorters;\n\nimport java.lang.reflect.Modifier;\nimport cn.alphacoding.judge.JavaExerciseTestBase;\n\n/**\n * 任务1 裁判\n */\n@FixMethodOrder(MethodSorters.NAME_ASCENDING)\npublic class TestJunit02   extends JavaExerciseTestBase{\n\n    @Test\n    public void test_00() throws ClassNotFoundException {\n\n        Checker c = new Checker();\n        c.checkType(getFullClassName(\"FireMonster\")).checkCtor(classes(String.class)).newInstance(\"\",\"哈哈\").checkMethod(\"attack\").invoke().value(v -> {\n            Assert.assertEquals(\"FireMonster类attack方法输出有误\",\"Attack with fire!\",v);\n        });\n\n\n\n    }\n\n}\n\n\n",
-									"errorReason": "测试用例检查失败，实际输出不正确，与期望不符",
-									"feedback": "",
-									"hideInfo": "allDisplay",
-									"ruleFileName": "TestJunit02.java"
-								},
-								{
-									"id": "qf2yieamfq",
-									"mode": "junit_match",
-									"scorePercentage": "1",
-									"presetInput": "",
-									"precommon": "",
-									"replace_main": "",
-									"conveyData": "",
-									"presetBack": "",
-									"functionsCall": "",
-									"presetOutput": "",
-									"rule": "import cn.alphacoding.judge.Checker;\nimport org.junit.Assert;\nimport org.junit.FixMethodOrder;\nimport org.junit.Test;\nimport org.junit.runners.MethodSorters;\n\nimport java.lang.reflect.Modifier;\nimport cn.alphacoding.judge.JavaExerciseTestBase;\n\n/**\n * 任务1 裁判\n */\n@FixMethodOrder(MethodSorters.NAME_ASCENDING)\npublic class TestJunit14 extends JavaExerciseTestBase{\n\n    @Test\n    public void test_00() throws ClassNotFoundException {\n\n        Checker c = new Checker();\n        c.checkType(getFullClassName(\"StoneMonster\")).checkCtor(classes(String.class)).newInstance(\"\",\"哈哈1\").checkMethod(\"attack\").invoke().value(v -> {\n            Assert.assertEquals(\"StoneMonster 类 attack 方法输出有误\",\"Attack with stones!\",v);\n        });\n\n\n\n    }\n\n}\n\n\n",
-									"errorReason": "测试用例检查失败，实际输出不正确，与期望不符",
-									"feedback": "",
-									"hideInfo": "allDisplay",
-									"ruleFileName": "TestJunit14.java"
-								},
-								{
-									"id": "s15n5o87eb",
-									"mode": "junit_match",
-									"scorePercentage": "1",
-									"presetInput": "",
-									"precommon": "",
-									"replace_main": "",
-									"conveyData": "",
-									"presetBack": "",
-									"functionsCall": "",
-									"presetOutput": "",
-									"rule": "import cn.alphacoding.judge.Checker;\nimport org.junit.Assert;\nimport org.junit.FixMethodOrder;\nimport org.junit.Test;\nimport org.junit.runners.MethodSorters;\n\nimport java.lang.reflect.Modifier;\nimport cn.alphacoding.judge.JavaExerciseTestBase;\n\n/**\n * 任务1 裁判\n */\n@FixMethodOrder(MethodSorters.NAME_ASCENDING)\npublic class TestJunit15   extends JavaExerciseTestBase{\n\n    @Test\n    public void test_00() throws ClassNotFoundException {\n\n        Checker c = new Checker();\n        c.checkType(getFullClassName(\"WaterMonster\")).checkCtor(classes(String.class)).newInstance(\"\",\"哈哈2\").checkMethod(\"attack\").invoke().value(v -> {\n            Assert.assertEquals(\"WaterMonster类attack方法输出有误\",\"Attack with water!\",v);\n        });\n\n\n\n    }\n\n}\n\n\n",
-									"errorReason": "测试用例检查失败，实际输出不正确，与期望不符",
-									"feedback": "",
-									"hideInfo": "allDisplay",
-									"ruleFileName": "TestJunit15.java"
-								}
-							],
-							"id": 2
-						}
-					],
-					"precommon": "",
-					"preStdin": "",
-					"import_sql": "",
-					"interpreter": "javac",
-					"language": "java",
-					"scoreMode": "allTrue",
-					"codeSolution": "",
-					"presetCode": "",
-					"testCase": [
-						{
-							"testTitle": "",
-							"testContent": "\n\n\n",
-							"testResult": "true",
-							"noPassjudge": []
-						}
-					],
-					"parsing": {
-						"type": "markdown",
-						"content": ""
-					},
-					"questionbank": [
-						{
-							"_id": "60389a9e128cc077763672ee",
-							"name": "Java语言题库（免费）",
-							"totalNum": 299,
-							"owner": 1,
-							"createdAt": "2021-02-26T06:52:14.905Z",
-							"orgId": 1,
-							"isPublic": true,
-							"updatedAt": "2021-02-26T07:32:01.394Z",
-							"updater": 1
-						}
-					],
-					"isFiles": true,
-					"attachments": null,
-					"checkUserContext": false,
-					"disablePreStdin": false,
-					"treeTags": [
-						{
-							"_id": "5fd9f13cc975ca5b69c6513d"
-						}
-					],
-					"isJudge": true,
-					"explain": {
-						"content": "",
-						"type": "markdown",
-						"solutionMaterials": [],
-						"learningMaterials": []
-					},
-					"parentId": "61ef730a20993144508ad6ea",
-					"hasSolution": true,
-					"hasHint": false
-				}
-			}
-		},
-		"setting": {
-			"lessonId": "5e85e4aec67ed52365945e34",
-			"status": "release",
-			"isAllowViewSolution": false,
-			"isAllowViewHint": false
-		},
-		"learnData": {
-			"aced": true,
-			"commitNum": 1,
-			"correct": true,
-			"correctAt": "2023-11-24T01:27:21.000Z",
-			"lessonId": "5e85e4aec67ed52365945e34",
-			"lessonPath": "5e85e4aec67ed52365945e34",
-			"score": 10,
-			"duration": 199310,
-			"timeConsuming": 182856,
-			"correctNum": 1
-		},
-		"exercisesLearnData": {
-			"5e86b3b0c67ed52365945fc3": {
-				"aced": true,
-				"commitNum": 1,
-				"correctAnswer": {
-					"files": [
-						{
-							"code": "public abstract class Monster {\n    // private instance variable\n    private String name;\n\n    /** Constructs a Monster instance with the given name */\n    public Monster(String name) {\n        this.name = name;\n    }\n\n    /** Defines a common behavior called attack() for all its subclasses */\n    public abstract String attack();\n}",
-							"hide": false,
-							"main": false,
-							"type": "java",
-							"_index": "0",
-							"content": "public abstract class Monster {\n    // private instance variable\n    private String name;\n\n    /** Constructs a Monster instance with the given name */\n    public Monster(String name) {\n        this.name = name;\n    }\n\n    /** Defines a common behavior called attack() for all its subclasses */\n    public abstract String attack();\n}",
-							"prepare": "public class Monster {\n    //请在此处开始编写你的代码\n}",
-							"fileName": "Monster.java",
-							"language": "java",
-							"preStdin": "",
-							"readOnly": false
-						},
-						{
-							"code": "public class FireMonster extends Monster {\n    /** Constructs a FireMonster with the given name */\n    public FireMonster(String name) {\n        super(name);\n    }\n    /** Subclass provides actual implementation for attack() */\n    @Override\n    public String attack() {\n        return \"Attack with fire!\";\n    }\n}",
-							"hide": false,
-							"main": false,
-							"type": "java",
-							"_index": "1",
-							"content": "public class FireMonster extends Monster {\n    /** Constructs a FireMonster with the given name */\n    public FireMonster(String name) {\n        super(name);\n    }\n    /** Subclass provides actual implementation for attack() */\n    @Override\n    public String attack() {\n        return \"Attack with fire!\";\n    }\n}",
-							"prepare": "public class FireMonster{\n    //请在此处开始编写你的代码\n}",
-							"fileName": "FireMonster.java",
-							"language": "java",
-							"preStdin": "",
-							"readOnly": false
-						},
-						{
-							"code": "public class StoneMonster extends Monster {\n    /** Constructs a StoneMonster instance with the given name */\n    public StoneMonster(String name) {\n        super(name);\n    }\n    /** Subclass provides actual implementation for attack() */\n    @Override\n    public String attack() {\n        return \"Attack with stones!\";\n    }\n}",
-							"hide": false,
-							"main": false,
-							"type": "java",
-							"_index": "2",
-							"content": "public class StoneMonster extends Monster {\n    /** Constructs a StoneMonster instance with the given name */\n    public StoneMonster(String name) {\n        super(name);\n    }\n    /** Subclass provides actual implementation for attack() */\n    @Override\n    public String attack() {\n        return \"Attack with stones!\";\n    }\n}",
-							"prepare": "public class StoneMonster{\n    //请在此处开始编写你的代码\n}",
-							"fileName": "StoneMonster.java",
-							"language": "java",
-							"preStdin": "",
-							"readOnly": false
-						},
-						{
-							"code": "public class WaterMonster extends Monster {\n    /** Constructs a WaterMonster instance with the given name */\n    public WaterMonster(String name) {\n        super(name);\n    }\n    /** Subclass provides actual implementation for attack() */\n    @Override\n    public String attack() {\n        return \"Attack with water!\";\n    }\n}",
-							"hide": false,
-							"main": false,
-							"type": "java",
-							"_index": "3",
-							"content": "public class WaterMonster extends Monster {\n    /** Constructs a WaterMonster instance with the given name */\n    public WaterMonster(String name) {\n        super(name);\n    }\n    /** Subclass provides actual implementation for attack() */\n    @Override\n    public String attack() {\n        return \"Attack with water!\";\n    }\n}",
-							"prepare": "public class WaterMonster{\n    //请在此处开始编写你的代码\n}",
-							"fileName": "WaterMonster.java",
-							"language": "java",
-							"preStdin": "",
-							"readOnly": false
-						},
-						{
-							"code": "public class TestMonster {\n    public static void main(String[] args) {\n        // Program at the specification defined in the superclass/interface.\n        // Declare instances of the superclass, substituted by subclasses.\n        Monster m1 = new FireMonster(\"r2u2\");   // upcast\n        Monster m2 = new WaterMonster(\"u2r2\");  // upcast\n        Monster m3 = new StoneMonster(\"r2r2\");  // upcast\n\n        // Invoke the actual implementation\n        System.out.println(m1.attack());  // Run FireMonster's attack()\n        //Attack with fire!\n        System.out.println(m2.attack());  // Run WaterMonster's attack()\n        //Attack with water!\n        System.out.println(m3.attack());  // Run StoneMonster's attack()\n        //Attack with stones!\n\n        // m1 dies, generate a new instance and re-assign to m1.\n        m1 = new StoneMonster(\"a2b2\");  // upcast\n        System.out.println(m1.attack());  // Run StoneMonster's attack()\n        //Attack with stones!\n\n    }\n}",
-							"hide": false,
-							"main": true,
-							"type": "java",
-							"_index": "4",
-							"content": "public class TestMonster {\n    public static void main(String[] args) {\n        // Program at the specification defined in the superclass/interface.\n        // Declare instances of the superclass, substituted by subclasses.\n        Monster m1 = new FireMonster(\"r2u2\");   // upcast\n        Monster m2 = new WaterMonster(\"u2r2\");  // upcast\n        Monster m3 = new StoneMonster(\"r2r2\");  // upcast\n\n        // Invoke the actual implementation\n        System.out.println(m1.attack());  // Run FireMonster's attack()\n        //Attack with fire!\n        System.out.println(m2.attack());  // Run WaterMonster's attack()\n        //Attack with water!\n        System.out.println(m3.attack());  // Run StoneMonster's attack()\n        //Attack with stones!\n\n        // m1 dies, generate a new instance and re-assign to m1.\n        m1 = new StoneMonster(\"a2b2\");  // upcast\n        System.out.println(m1.attack());  // Run StoneMonster's attack()\n        //Attack with stones!\n\n    }\n}",
-							"prepare": "public class TestMonster {\n    public static void main(String[] args) {\n         //可以自行在Main方法中进行调试\n    }\n}",
-							"fileName": "TestMonster.java",
-							"language": "java",
-							"readOnly": false
-						}
-					],
-					"runId": "qfcjvdx8qb",
-					"stdin": "",
-					"isFiles": true
-				},
-				"confirm": false,
-				"score": 10,
-				"correctAt": "2023-11-24T01:27:21.000Z",
-				"lastAnswer": {
-					"files": [
-						{
-							"code": "public abstract class Monster {\n    // private instance variable\n    private String name;\n\n    /** Constructs a Monster instance with the given name */\n    public Monster(String name) {\n        this.name = name;\n    }\n\n    /** Defines a common behavior called attack() for all its subclasses */\n    public abstract String attack();\n}",
-							"hide": false,
-							"main": false,
-							"type": "java",
-							"_index": "0",
-							"content": "public abstract class Monster {\n    // private instance variable\n    private String name;\n\n    /** Constructs a Monster instance with the given name */\n    public Monster(String name) {\n        this.name = name;\n    }\n\n    /** Defines a common behavior called attack() for all its subclasses */\n    public abstract String attack();\n}",
-							"prepare": "public class Monster {\n    //请在此处开始编写你的代码\n}",
-							"fileName": "Monster.java",
-							"language": "java",
-							"preStdin": "",
-							"readOnly": false
-						},
-						{
-							"code": "public class FireMonster extends Monster {\n    /** Constructs a FireMonster with the given name */\n    public FireMonster(String name) {\n        super(name);\n    }\n    /** Subclass provides actual implementation for attack() */\n    @Override\n    public String attack() {\n        return \"Attack with fire!\";\n    }\n}",
-							"hide": false,
-							"main": false,
-							"type": "java",
-							"_index": "1",
-							"content": "public class FireMonster extends Monster {\n    /** Constructs a FireMonster with the given name */\n    public FireMonster(String name) {\n        super(name);\n    }\n    /** Subclass provides actual implementation for attack() */\n    @Override\n    public String attack() {\n        return \"Attack with fire!\";\n    }\n}",
-							"prepare": "public class FireMonster{\n    //请在此处开始编写你的代码\n}",
-							"fileName": "FireMonster.java",
-							"language": "java",
-							"preStdin": "",
-							"readOnly": false
-						},
-						{
-							"code": "public class StoneMonster extends Monster {\n    /** Constructs a StoneMonster instance with the given name */\n    public StoneMonster(String name) {\n        super(name);\n    }\n    /** Subclass provides actual implementation for attack() */\n    @Override\n    public String attack() {\n        return \"Attack with stones!\";\n    }\n}",
-							"hide": false,
-							"main": false,
-							"type": "java",
-							"_index": "2",
-							"content": "public class StoneMonster extends Monster {\n    /** Constructs a StoneMonster instance with the given name */\n    public StoneMonster(String name) {\n        super(name);\n    }\n    /** Subclass provides actual implementation for attack() */\n    @Override\n    public String attack() {\n        return \"Attack with stones!\";\n    }\n}",
-							"prepare": "public class StoneMonster{\n    //请在此处开始编写你的代码\n}",
-							"fileName": "StoneMonster.java",
-							"language": "java",
-							"preStdin": "",
-							"readOnly": false
-						},
-						{
-							"code": "public class WaterMonster extends Monster {\n    /** Constructs a WaterMonster instance with the given name */\n    public WaterMonster(String name) {\n        super(name);\n    }\n    /** Subclass provides actual implementation for attack() */\n    @Override\n    public String attack() {\n        return \"Attack with water!\";\n    }\n}",
-							"hide": false,
-							"main": false,
-							"type": "java",
-							"_index": "3",
-							"content": "public class WaterMonster extends Monster {\n    /** Constructs a WaterMonster instance with the given name */\n    public WaterMonster(String name) {\n        super(name);\n    }\n    /** Subclass provides actual implementation for attack() */\n    @Override\n    public String attack() {\n        return \"Attack with water!\";\n    }\n}",
-							"prepare": "public class WaterMonster{\n    //请在此处开始编写你的代码\n}",
-							"fileName": "WaterMonster.java",
-							"language": "java",
-							"preStdin": "",
-							"readOnly": false
-						},
-						{
-							"code": "public class TestMonster {\n    public static void main(String[] args) {\n        // Program at the specification defined in the superclass/interface.\n        // Declare instances of the superclass, substituted by subclasses.\n        Monster m1 = new FireMonster(\"r2u2\");   // upcast\n        Monster m2 = new WaterMonster(\"u2r2\");  // upcast\n        Monster m3 = new StoneMonster(\"r2r2\");  // upcast\n\n        // Invoke the actual implementation\n        System.out.println(m1.attack());  // Run FireMonster's attack()\n        //Attack with fire!\n        System.out.println(m2.attack());  // Run WaterMonster's attack()\n        //Attack with water!\n        System.out.println(m3.attack());  // Run StoneMonster's attack()\n        //Attack with stones!\n\n        // m1 dies, generate a new instance and re-assign to m1.\n        m1 = new StoneMonster(\"a2b2\");  // upcast\n        System.out.println(m1.attack());  // Run StoneMonster's attack()\n        //Attack with stones!\n\n    }\n}",
-							"hide": false,
-							"main": true,
-							"type": "java",
-							"_index": "4",
-							"content": "public class TestMonster {\n    public static void main(String[] args) {\n        // Program at the specification defined in the superclass/interface.\n        // Declare instances of the superclass, substituted by subclasses.\n        Monster m1 = new FireMonster(\"r2u2\");   // upcast\n        Monster m2 = new WaterMonster(\"u2r2\");  // upcast\n        Monster m3 = new StoneMonster(\"r2r2\");  // upcast\n\n        // Invoke the actual implementation\n        System.out.println(m1.attack());  // Run FireMonster's attack()\n        //Attack with fire!\n        System.out.println(m2.attack());  // Run WaterMonster's attack()\n        //Attack with water!\n        System.out.println(m3.attack());  // Run StoneMonster's attack()\n        //Attack with stones!\n\n        // m1 dies, generate a new instance and re-assign to m1.\n        m1 = new StoneMonster(\"a2b2\");  // upcast\n        System.out.println(m1.attack());  // Run StoneMonster's attack()\n        //Attack with stones!\n\n    }\n}",
-							"prepare": "public class TestMonster {\n    public static void main(String[] args) {\n         //可以自行在Main方法中进行调试\n    }\n}",
-							"fileName": "TestMonster.java",
-							"language": "java",
-							"readOnly": false
-						}
-					],
-					"runId": "qfcjvdx8qb",
-					"stdin": "",
-					"isFiles": true
-				},
-				"debugTime": 1,
-				"isCorrect": true,
-				"result": {
-					"_id": "5e86b3b0c67ed52365945fc3",
-					"score": 10,
-					"detail": {
-						"tasks": [
-							{
-								"judge": [
-									{
-										"id": "5e872b69ad8c83e2f68b0ac7",
-										"mode": "junit_match",
-										"isJudge": true,
-										"message": "",
-										"outputs": {
-											"text": "Attack with fire!\nAttack with water!\nAttack with stones!\nAttack with stones!\n",
-											"judgeId": "5e872b69ad8c83e2f68b0ac7"
-										},
-										"compiled": true,
-										"feedbacks": "",
-										"is_correct": true,
-										"errorReason": "测试用例检查失败，实际输出不正确，与期望不符",
-										"presetInput": "",
-										"presetOutput": "",
-										"compileOutput": ""
-									},
-									{
-										"id": "e7cl6sak9j",
-										"mode": "junit_match",
-										"isJudge": true,
-										"message": "",
-										"outputs": {
-											"text": "Attack with fire!\nAttack with water!\nAttack with stones!\nAttack with stones!\n",
-											"judgeId": "e7cl6sak9j"
-										},
-										"compiled": true,
-										"feedbacks": "",
-										"is_correct": true,
-										"errorReason": "测试用例检查失败，实际输出不正确，与期望不符",
-										"presetInput": "",
-										"presetOutput": "",
-										"compileOutput": ""
-									},
-									{
-										"id": "mieexdu9vr",
-										"mode": "junit_match",
-										"isJudge": true,
-										"message": "",
-										"outputs": {
-											"text": "Attack with fire!\nAttack with water!\nAttack with stones!\nAttack with stones!\n",
-											"judgeId": "mieexdu9vr"
-										},
-										"compiled": true,
-										"feedbacks": "",
-										"is_correct": true,
-										"errorReason": "测试用例检查失败，实际输出不正确，与期望不符",
-										"presetInput": "",
-										"presetOutput": "",
-										"compileOutput": ""
-									},
-									{
-										"id": "ptnxa79v3q",
-										"mode": "junit_match",
-										"isJudge": true,
-										"message": "",
-										"outputs": {
-											"text": "Attack with fire!\nAttack with water!\nAttack with stones!\nAttack with stones!\n",
-											"judgeId": "ptnxa79v3q"
-										},
-										"compiled": true,
-										"feedbacks": "",
-										"is_correct": true,
-										"errorReason": "测试用例检查失败，实际输出不正确，与期望不符",
-										"presetInput": "",
-										"presetOutput": "",
-										"compileOutput": ""
-									}
-								],
-								"isTrue": true,
-								"require": "按照题目要求定义抽象类及其子类",
-								"showNum": 1
-							},
-							{
-								"judge": [
-									{
-										"id": "5e872bc4ad8c83e2f68b0ac8",
-										"mode": "junit_match",
-										"isJudge": true,
-										"message": "",
-										"outputs": {
-											"text": "Attack with fire!\nAttack with water!\nAttack with stones!\nAttack with stones!\n",
-											"judgeId": "5e872bc4ad8c83e2f68b0ac8"
-										},
-										"compiled": true,
-										"feedbacks": "",
-										"is_correct": true,
-										"errorReason": "测试用例检查失败，实际输出不正确，与期望不符",
-										"presetInput": "",
-										"presetOutput": "",
-										"compileOutput": ""
-									},
-									{
-										"id": "plv3m9m21b",
-										"mode": "junit_match",
-										"isJudge": true,
-										"message": "",
-										"outputs": {
-											"text": "Attack with fire!\nAttack with water!\nAttack with stones!\nAttack with stones!\n",
-											"judgeId": "plv3m9m21b"
-										},
-										"compiled": true,
-										"feedbacks": "",
-										"is_correct": true,
-										"errorReason": "测试用例检查失败，实际输出不正确，与期望不符",
-										"presetInput": "",
-										"presetOutput": "",
-										"compileOutput": ""
-									},
-									{
-										"id": "ad3i0gx6es",
-										"mode": "junit_match",
-										"isJudge": true,
-										"message": "",
-										"outputs": {
-											"text": "Attack with fire!\nAttack with water!\nAttack with stones!\nAttack with stones!\n",
-											"judgeId": "ad3i0gx6es"
-										},
-										"compiled": true,
-										"feedbacks": "",
-										"is_correct": true,
-										"errorReason": "测试用例检查失败，实际输出不正确，与期望不符",
-										"presetInput": "",
-										"presetOutput": "",
-										"compileOutput": ""
-									},
-									{
-										"id": "btcahjqlri",
-										"mode": "junit_match",
-										"isJudge": true,
-										"message": "",
-										"outputs": {
-											"text": "Attack with fire!\nAttack with water!\nAttack with stones!\nAttack with stones!\n",
-											"judgeId": "btcahjqlri"
-										},
-										"compiled": true,
-										"feedbacks": "",
-										"is_correct": true,
-										"errorReason": "测试用例检查失败，实际输出不正确，与期望不符",
-										"presetInput": "",
-										"presetOutput": "",
-										"compileOutput": ""
-									},
-									{
-										"id": "a2q0p3a38p",
-										"mode": "junit_match",
-										"isJudge": true,
-										"message": "",
-										"outputs": {
-											"text": "Attack with fire!\nAttack with water!\nAttack with stones!\nAttack with stones!\n",
-											"judgeId": "a2q0p3a38p"
-										},
-										"compiled": true,
-										"feedbacks": "",
-										"is_correct": true,
-										"errorReason": "测试用例检查失败，实际输出不正确，与期望不符",
-										"presetInput": "",
-										"presetOutput": "",
-										"compileOutput": ""
-									},
-									{
-										"id": "vemvgmdesg",
-										"mode": "junit_match",
-										"isJudge": true,
-										"message": "",
-										"outputs": {
-											"text": "Attack with fire!\nAttack with water!\nAttack with stones!\nAttack with stones!\n",
-											"judgeId": "vemvgmdesg"
-										},
-										"compiled": true,
-										"feedbacks": "",
-										"is_correct": true,
-										"errorReason": "测试用例检查失败，实际输出不正确，与期望不符",
-										"presetInput": "",
-										"presetOutput": "",
-										"compileOutput": ""
-									},
-									{
-										"id": "kbsb0ai0l7",
-										"mode": "junit_match",
-										"isJudge": true,
-										"message": "",
-										"outputs": {
-											"text": "Attack with fire!\nAttack with water!\nAttack with stones!\nAttack with stones!\n",
-											"judgeId": "kbsb0ai0l7"
-										},
-										"compiled": true,
-										"feedbacks": "",
-										"is_correct": true,
-										"errorReason": "测试用例检查失败，实际输出不正确，与期望不符",
-										"presetInput": "",
-										"presetOutput": "",
-										"compileOutput": ""
-									},
-									{
-										"id": "ae1f6i4gqk",
-										"mode": "junit_match",
-										"isJudge": true,
-										"message": "",
-										"outputs": {
-											"text": "Attack with fire!\nAttack with water!\nAttack with stones!\nAttack with stones!\n",
-											"judgeId": "ae1f6i4gqk"
-										},
-										"compiled": true,
-										"feedbacks": "",
-										"is_correct": true,
-										"errorReason": "测试用例检查失败，实际输出不正确，与期望不符",
-										"presetInput": "",
-										"presetOutput": "",
-										"compileOutput": ""
-									},
-									{
-										"id": "h4exso2dbd",
-										"mode": "junit_match",
-										"isJudge": true,
-										"message": "",
-										"outputs": {
-											"text": "Attack with fire!\nAttack with water!\nAttack with stones!\nAttack with stones!\n",
-											"judgeId": "h4exso2dbd"
-										},
-										"compiled": true,
-										"feedbacks": "",
-										"is_correct": true,
-										"errorReason": "测试用例检查失败，实际输出不正确，与期望不符",
-										"presetInput": "",
-										"presetOutput": "",
-										"compileOutput": ""
-									}
-								],
-								"isTrue": true,
-								"require": "根据题目要求定义变量和方法",
-								"showNum": 1
-							},
-							{
-								"judge": [
-									{
-										"id": "5e873271ad8c83e2f68b0ac9",
-										"mode": "junit_match",
-										"isJudge": true,
-										"message": "",
-										"outputs": {
-											"text": "Attack with fire!\nAttack with water!\nAttack with stones!\nAttack with stones!\n",
-											"judgeId": "5e873271ad8c83e2f68b0ac9"
-										},
-										"compiled": true,
-										"feedbacks": "",
-										"is_correct": true,
-										"errorReason": "测试用例检查失败，实际输出不正确，与期望不符",
-										"presetInput": "",
-										"presetOutput": "",
-										"compileOutput": ""
-									},
-									{
-										"id": "qf2yieamfq",
-										"mode": "junit_match",
-										"isJudge": true,
-										"message": "",
-										"outputs": {
-											"text": "Attack with fire!\nAttack with water!\nAttack with stones!\nAttack with stones!\n",
-											"judgeId": "qf2yieamfq"
-										},
-										"compiled": true,
-										"feedbacks": "",
-										"is_correct": true,
-										"errorReason": "测试用例检查失败，实际输出不正确，与期望不符",
-										"presetInput": "",
-										"presetOutput": "",
-										"compileOutput": ""
-									},
-									{
-										"id": "s15n5o87eb",
-										"mode": "junit_match",
-										"isJudge": true,
-										"message": "",
-										"outputs": {
-											"text": "Attack with fire!\nAttack with water!\nAttack with stones!\nAttack with stones!\n",
-											"judgeId": "s15n5o87eb"
-										},
-										"compiled": true,
-										"feedbacks": "",
-										"is_correct": true,
-										"errorReason": "测试用例检查失败，实际输出不正确，与期望不符",
-										"presetInput": "",
-										"presetOutput": "",
-										"compileOutput": ""
-									}
-								],
-								"isTrue": true,
-								"require": "检查类及方法是否正确",
-								"showNum": 1
-							}
-						]
-					},
-					"isJudge": true,
-					"subType": "programming",
-					"compiled": true,
-					"corrected": true,
-					"scorePercent": 100
-				},
-				"lastScore": 10,
-				"comment": null,
-				"commentBy": null,
-				"commentAt": null
-			}
-		},
-		"documentLearnData": {},
-		"videoLearnData": {}
-	}
+    "ok": true,
+    "data": {
+        "lesson": {
+            "id": 5134,
+            "lessonId": "5e43948e4f503a0470aa7e28",
+            "lessonPath": "jiao-huan-liang-shu-de-zhi",
+            "coursewareId": "60221c7a9deec539c1367f8b",
+            "title": "3、交换两数的值",
+            "type": "single",
+            "parentId": "5e8d963642bd916bded4a8dc",
+            "order": 25,
+            "status": "release",
+            "mustdo": false,
+            "description": "",
+            "orgId": 1,
+            "minutes": 5,
+            "existence": true,
+            "creator": 1,
+            "createdAt": "2021-02-09T05:24:10.000Z",
+            "updater": 480,
+            "updatedAt": "2021-06-10T07:49:45.000Z",
+            "exerciseNums": 1,
+            "scores": 10,
+            "level": 2,
+            "sourceResId": null,
+            "elements": [
+                {
+                    "exerciseType": "programming",
+                    "resourceId": "5e425c907b8d705887992017",
+                    "rid": null,
+                    "score": 10,
+                    "title": "将a,b两个变量中的值互换",
+                    "type": "exercise"
+                }
+            ],
+            "files": [],
+            "knowledge": {
+                "content": "",
+                "type": ""
+            },
+            "exercises": {
+                "5e425c907b8d705887992017": {
+                    "_id": "62f50a86be99da7146e82ce9",
+                    "artificialJudge": false,
+                    "title": "将a,b两个变量中的值互换",
+                    "description": "",
+                    "resId": "5e425c907b8d705887992017",
+                    "question": "### 题目描述\n任意输入两个整数变量a,b,进行交换后得到整数b,a。 \n注：整数之间用空格隔开\n### 输出样例1\n\n```\n交换前: a: 100, b: 200\n交换后: a: 200, b: 100\n```\n### 输出样例2\n\n```\n交换前: a: -50, b: -80\n交换后: a: -80, b: -50\n\n```\n### 输出样例3\n\n```\n交换前: a: 22, b: -170\n交换后: a: -170, b: 22\n\n```\n",
+                    "exerciseType": "",
+                    "subType": "programming",
+                    "hint": "",
+                    "precommonName": "",
+                    "tags": [
+                        {
+                            "_id": "5dc383743694024210689ea0",
+                            "title": "Java语言",
+                            "tagType": "语言",
+                            "tagTypeColor": "#A6CEB1",
+                            "creator": 1,
+                            "createAt": "2019-11-07T02:37:40.064Z",
+                            "totalNum": 146,
+                            "updateAt": "2019-11-13T02:20:34.496Z",
+                            "updater": null
+                        },
+                        {
+                            "_id": "5df74039aee896776e5675e9",
+                            "title": "变量和常量",
+                            "tagType": "知识点",
+                            "tagTypeColor": "#4EC256",
+                            "creator": 1,
+                            "createAt": "2019-12-16T08:28:41.945Z",
+                            "totalNum": 40
+                        },
+                        {
+                            "_id": "5dbfe076606de22b075153ec",
+                            "title": "数据类型和运算符",
+                            "tagType": "章节",
+                            "tagTypeColor": "#72B6D9",
+                            "creator": null,
+                            "createAt": "2019-11-04T08:25:26.571Z",
+                            "totalNum": 469,
+                            "updateAt": "2019-11-13T02:40:43.675Z",
+                            "updater": null
+                        }
+                    ],
+                    "errorHint": "",
+                    "passHint": "",
+                    "precommonCode": [],
+                    "difficult": 1,
+                    "codeSolutions": [],
+                    "createdAt": "2022-08-11T13:56:22.201Z",
+                    "creator": 110190,
+                    "orgId": 1,
+                    "note": "",
+                    "errorNum": 1,
+                    "notes": "",
+                    "tasks": [
+                        {
+                            "require": "打印出 a, b 的值，并将交换后的值打印输出",
+                            "showNum": "1",
+                            "judges": [
+                                {
+                                    "conveyData": "",
+                                    "errorReason": "测试用例检查失败，实际输出不正确，与期望不符",
+                                    "feedback": "",
+                                    "functionsCall": "",
+                                    "hideInfo": "allDisplay",
+                                    "id": "gjggtzy5xf",
+                                    "mode": "output_match",
+                                    "precommon": "",
+                                    "presetBack": "",
+                                    "presetInput": "100   200",
+                                    "presetOutput": "交换前: a: 100, b: 200\n交换后: a: 200 , b: 100",
+                                    "replace_main": "",
+                                    "rule": "{\"re\": \"\\\\D*200\\\\D+100\"}",
+                                    "ruleFileName": "",
+                                    "scorePercentage": "1"
+                                },
+                                {
+                                    "conveyData": "",
+                                    "errorReason": "测试用例检查失败，实际输出不正确，与期望不符",
+                                    "feedback": "",
+                                    "functionsCall": "",
+                                    "hideInfo": "allDisplay",
+                                    "id": "e6mfr3dk51",
+                                    "mode": "output_match",
+                                    "precommon": "",
+                                    "presetBack": "",
+                                    "presetInput": "-50 -80",
+                                    "presetOutput": "交换前: a: -50, b: -80\n交换后: a: -80 , b: -50",
+                                    "replace_main": "",
+                                    "rule": "{\"re\": \"\\\\D*-80\\\\D+-50\"}",
+                                    "ruleFileName": "",
+                                    "scorePercentage": "1"
+                                },
+                                {
+                                    "conveyData": "",
+                                    "errorReason": "测试用例检查失败，实际输出不正确，与期望不符",
+                                    "feedback": "",
+                                    "functionsCall": "",
+                                    "hideInfo": "allDisplay",
+                                    "id": "xn7877eqti",
+                                    "mode": "output_match",
+                                    "precommon": "",
+                                    "presetBack": "",
+                                    "presetInput": "22  -170",
+                                    "presetOutput": "交换前: a: 22, b: -170\n交换后: a: -170, b: 22",
+                                    "replace_main": "",
+                                    "rule": "{\"re\": \"\\\\D*-170\\\\D+22\"}",
+                                    "ruleFileName": "",
+                                    "scorePercentage": "1"
+                                }
+                            ],
+                            "id": 0
+                        }
+                    ],
+                    "precommon": "",
+                    "preStdin": "100  200",
+                    "import_sql": "",
+                    "interpreter": "javac",
+                    "language": "java",
+                    "scoreMode": "allTrue",
+                    "codeSolution": "import java.util.Scanner;\npublic class Program{\n     public static void main (String[] args) {\n     Scanner sc = new Scanner(System.in);\n    System.out.println(\"分别输入a,b\");\n     int a = sc.nextInt();\n     int b = sc.nextInt();\n    System.out.println(\"交换前: a: \" + a + \", b: \" + b);\n      b=a+b;\n      a=b-a;\n      b=b-a; \n    System.out.println(\"交换后: a: \" + a + \", b: \" + b);\n    }\n}",
+                    "presetCode": "import java.util.Scanner;\npublic class Program{\n     public static void main (String[] args) {\n     Scanner sc = new Scanner(System.in);\n     System.out.println(\"分别输入a,b\");\n    \n         \n         \n         \n         \n         \n         \n         \n    }\n}",
+                    "testCase": [
+                        {
+                            "testTitle": "",
+                            "testContent": "\n\n\n",
+                            "testResult": "true",
+                            "noPassjudge": []
+                        }
+                    ],
+                    "parsing": {
+                        "type": "markdown",
+                        "content": ""
+                    },
+                    "questionbank": [
+                        {
+                            "_id": "5ee9895e677e4e2313567864",
+                            "name": "Java语言考试题库",
+                            "totalNum": 740,
+                            "owner": 1,
+                            "createdAt": "2020-06-17T03:09:18.197Z",
+                            "orgId": 1,
+                            "collaborationDetail": [
+                                {
+                                    "userId": 481,
+                                    "perms": [
+                                        "create",
+                                        "update",
+                                        "delete"
+                                    ]
+                                },
+                                {
+                                    "userId": 475,
+                                    "perms": [
+                                        "delete",
+                                        "update",
+                                        "create"
+                                    ]
+                                },
+                                {
+                                    "userId": 479,
+                                    "perms": [
+                                        "create",
+                                        "update",
+                                        "delete"
+                                    ]
+                                },
+                                {
+                                    "userId": 480,
+                                    "perms": [
+                                        "delete",
+                                        "update",
+                                        "create"
+                                    ]
+                                },
+                                {
+                                    "userId": 482,
+                                    "perms": [
+                                        "create",
+                                        "update",
+                                        "delete"
+                                    ]
+                                },
+                                {
+                                    "userId": 473,
+                                    "perms": []
+                                }
+                            ],
+                            "collaborators": [
+                                473,
+                                481,
+                                475,
+                                479,
+                                480,
+                                482
+                            ],
+                            "updatedAt": "2021-09-22T10:08:04.996Z",
+                            "updater": 1,
+                            "isPreset": true,
+                            "presetOrg": [
+                                323,
+                                277,
+                                175,
+                                169,
+                                165,
+                                161,
+                                117,
+                                108,
+                                119
+                            ],
+                            "presetOrgDetail": [
+                                {
+                                    "orgId": 323,
+                                    "perms": [
+                                        "use"
+                                    ]
+                                },
+                                {
+                                    "orgId": 277,
+                                    "perms": [
+                                        "use"
+                                    ]
+                                },
+                                {
+                                    "orgId": 175,
+                                    "perms": [
+                                        "use"
+                                    ]
+                                },
+                                {
+                                    "orgId": 169,
+                                    "perms": [
+                                        "edit"
+                                    ]
+                                },
+                                {
+                                    "orgId": 165,
+                                    "perms": [
+                                        "use"
+                                    ]
+                                },
+                                {
+                                    "orgId": 161,
+                                    "perms": [
+                                        "use"
+                                    ]
+                                },
+                                {
+                                    "orgId": 117,
+                                    "perms": [
+                                        "edit"
+                                    ]
+                                },
+                                {
+                                    "orgId": 108,
+                                    "perms": [
+                                        "use"
+                                    ]
+                                },
+                                {
+                                    "orgId": 119,
+                                    "perms": [
+                                        "edit"
+                                    ],
+                                    "presetAt": "2021-09-22T10:08:04.996Z"
+                                }
+                            ]
+                        }
+                    ],
+                    "isFiles": false,
+                    "attachments": null,
+                    "checkUserContext": false,
+                    "disablePreStdin": false,
+                    "treeTags": [
+                        {
+                            "_id": "5fd9ee32c975ca5b69c65101"
+                        }
+                    ],
+                    "isJudge": true,
+                    "explain": {
+                        "content": "",
+                        "type": "markdown",
+                        "solutionMaterials": [],
+                        "learningMaterials": []
+                    },
+                    "parentId": "62de58bea868f9284958c960",
+                    "hasSolution": true,
+                    "hasHint": false
+                }
+            }
+        },
+        "setting": {
+            "lessonId": "5e43948e4f503a0470aa7e28",
+            "status": "release",
+            "isAllowViewSolution": false,
+            "isAllowViewHint": false
+        },
+        "learnData": {
+            "aced": true,
+            "commitNum": 1,
+            "correct": true,
+            "correctAt": "2023-11-23T08:12:46.000Z",
+            "lessonId": "5e43948e4f503a0470aa7e28",
+            "lessonPath": "5e43948e4f503a0470aa7e28",
+            "score": 10,
+            "duration": 836521,
+            "timeConsuming": 60114,
+            "correctNum": 1
+        },
+        "exercisesLearnData": {
+            "5e425c907b8d705887992017": {
+                "aced": true,
+                "commitNum": 1,
+                "correctAnswer": {
+                    "files": [
+                        {
+                            "code": "import java.util.Scanner;\npublic class Program{\n     public static void main (String[] args) {\n     Scanner sc = new Scanner(System.in);\n    System.out.println(\"分别输入a,b\");\n     int a = sc.nextInt();\n     int b = sc.nextInt();\n    System.out.println(\"交换前: a: \" + a + \", b: \" + b);\n      b=a+b;\n      a=b-a;\n      b=b-a;\n    System.out.println(\"交换后: a: \" + a + \", b: \" + b);\n    }\n}",
+                            "_index": "",
+                            "content": "import java.util.Scanner;\npublic class Program{\n     public static void main (String[] args) {\n     Scanner sc = new Scanner(System.in);\n    System.out.println(\"分别输入a,b\");\n     int a = sc.nextInt();\n     int b = sc.nextInt();\n    System.out.println(\"交换前: a: \" + a + \", b: \" + b);\n      b=a+b;\n      a=b-a;\n      b=b-a;\n    System.out.println(\"交换后: a: \" + a + \", b: \" + b);\n    }\n}",
+                            "prepare": "import java.util.Scanner;\npublic class Program{\n     public static void main (String[] args) {\n     Scanner sc = new Scanner(System.in);\n     System.out.println(\"分别输入a,b\");\n    \n         \n         \n         \n         \n         \n         \n         \n    }\n}",
+                            "fileName": "Program.java",
+                            "language": "java",
+                            "preStdin": "100  200"
+                        }
+                    ],
+                    "runId": "pv54baw1ux",
+                    "stdin": "100  200",
+                    "isFiles": false
+                },
+                "confirm": false,
+                "score": 10,
+                "correctAt": "2023-11-23T08:12:46.000Z",
+                "lastAnswer": {
+                    "files": [
+                        {
+                            "code": "import java.util.Scanner;\npublic class Program{\n     public static void main (String[] args) {\n     Scanner sc = new Scanner(System.in);\n    System.out.println(\"分别输入a,b\");\n     int a = sc.nextInt();\n     int b = sc.nextInt();\n    System.out.println(\"交换前: a: \" + a + \", b: \" + b);\n      b=a+b;\n      a=b-a;\n      b=b-a;\n    System.out.println(\"交换后: a: \" + a + \", b: \" + b);\n    }\n}",
+                            "_index": "",
+                            "content": "import java.util.Scanner;\npublic class Program{\n     public static void main (String[] args) {\n     Scanner sc = new Scanner(System.in);\n    System.out.println(\"分别输入a,b\");\n     int a = sc.nextInt();\n     int b = sc.nextInt();\n    System.out.println(\"交换前: a: \" + a + \", b: \" + b);\n      b=a+b;\n      a=b-a;\n      b=b-a;\n    System.out.println(\"交换后: a: \" + a + \", b: \" + b);\n    }\n}",
+                            "prepare": "import java.util.Scanner;\npublic class Program{\n     public static void main (String[] args) {\n     Scanner sc = new Scanner(System.in);\n     System.out.println(\"分别输入a,b\");\n    \n         \n         \n         \n         \n         \n         \n         \n    }\n}",
+                            "fileName": "Program.java",
+                            "language": "java",
+                            "preStdin": "100  200"
+                        }
+                    ],
+                    "runId": "pv54baw1ux",
+                    "stdin": "100  200",
+                    "isFiles": false
+                },
+                "debugTime": 1,
+                "isCorrect": true,
+                "result": {
+                    "_id": "5e425c907b8d705887992017",
+                    "score": 10,
+                    "detail": {
+                        "tasks": [
+                            {
+                                "id": 0,
+                                "judge": [
+                                    {
+                                        "id": "gjggtzy5xf",
+                                        "mode": "output_match",
+                                        "isJudge": true,
+                                        "message": "",
+                                        "outputs": [
+                                            {
+                                                "text": "分别输入a,b\n",
+                                                "type": "stdout"
+                                            },
+                                            {
+                                                "text": "交换前: a: 100, b: 200\n",
+                                                "type": "stdout"
+                                            },
+                                            {
+                                                "text": "交换后: a: 200, b: 100\n",
+                                                "type": "stdout"
+                                            }
+                                        ],
+                                        "compiled": true,
+                                        "feedbacks": [],
+                                        "is_correct": true,
+                                        "errorReason": "测试用例检查失败，实际输出不正确，与期望不符",
+                                        "presetInput": "100   200",
+                                        "presetOutput": "交换前: a: 100, b: 200\n交换后: a: 200 , b: 100"
+                                    },
+                                    {
+                                        "id": "e6mfr3dk51",
+                                        "mode": "output_match",
+                                        "isJudge": true,
+                                        "message": "",
+                                        "outputs": [
+                                            {
+                                                "text": "分别输入a,b\n",
+                                                "type": "stdout"
+                                            },
+                                            {
+                                                "text": "交换前: a: -50, b: -80\n",
+                                                "type": "stdout"
+                                            },
+                                            {
+                                                "text": "交换后: a: -80, b: -50",
+                                                "type": "stdout"
+                                            },
+                                            {
+                                                "text": "\n",
+                                                "type": "stdout"
+                                            }
+                                        ],
+                                        "compiled": true,
+                                        "feedbacks": [],
+                                        "is_correct": true,
+                                        "errorReason": "测试用例检查失败，实际输出不正确，与期望不符",
+                                        "presetInput": "-50 -80",
+                                        "presetOutput": "交换前: a: -50, b: -80\n交换后: a: -80 , b: -50"
+                                    },
+                                    {
+                                        "id": "xn7877eqti",
+                                        "mode": "output_match",
+                                        "isJudge": true,
+                                        "message": "",
+                                        "outputs": [
+                                            {
+                                                "text": "分别输入a,b\n",
+                                                "type": "stdout"
+                                            },
+                                            {
+                                                "text": "交换前: a: 22, b: -170\n",
+                                                "type": "stdout"
+                                            },
+                                            {
+                                                "text": "交换后: a: -170, b: 22\n",
+                                                "type": "stdout"
+                                            }
+                                        ],
+                                        "compiled": true,
+                                        "feedbacks": [],
+                                        "is_correct": true,
+                                        "errorReason": "测试用例检查失败，实际输出不正确，与期望不符",
+                                        "presetInput": "22  -170",
+                                        "presetOutput": "交换前: a: 22, b: -170\n交换后: a: -170, b: 22"
+                                    }
+                                ],
+                                "isTrue": true,
+                                "isJudge": true,
+                                "require": "打印出 a, b 的值，并将交换后的值打印输出",
+                                "showNum": 1
+                            }
+                        ]
+                    },
+                    "isJudge": true,
+                    "subType": "programming",
+                    "compiled": true,
+                    "corrected": true,
+                    "scorePercent": 100
+                },
+                "lastScore": 10,
+                "comment": null,
+                "commentBy": null,
+                "commentAt": null
+            }
+        },
+        "documentLearnData": {},
+        "videoLearnData": {}
+    }
 }
