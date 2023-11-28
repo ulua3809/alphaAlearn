@@ -1,0 +1,323 @@
+{
+	"ok": true,
+	"data": {
+		"lesson": {
+			"id": 5201,
+			"lessonId": "5e4f8c298e1a9404f85e26cf",
+			"lessonPath": "lei-de-ding-yi",
+			"coursewareId": "60221c7a9deec539c1367f8b",
+			"title": "1、类的定义",
+			"type": "single",
+			"parentId": "5e8d963642bd916bded4a8df",
+			"order": 92,
+			"status": "release",
+			"mustdo": false,
+			"description": "",
+			"orgId": 1,
+			"minutes": 5,
+			"existence": true,
+			"creator": 1,
+			"createdAt": "2021-02-09T05:24:10.000Z",
+			"updater": 480,
+			"updatedAt": "2021-06-10T07:49:45.000Z",
+			"exerciseNums": 1,
+			"scores": 10,
+			"level": 2,
+			"sourceResId": null,
+			"elements": [
+				{
+					"exerciseType": "multiple-choice",
+					"resourceId": "5e4f85088e1a9404f85e26bc",
+					"rid": null,
+					"score": 10,
+					"title": "一个类定义包括（）",
+					"type": "exercise"
+				}
+			],
+			"files": [],
+			"knowledge": {
+				"content": "",
+				"type": ""
+			},
+			"exercises": {
+				"5e4f85088e1a9404f85e26bc": {
+					"_id": "5f3cd46aff8bc53fcdec28b9",
+					"artificialJudge": false,
+					"title": "一个类定义包括（）",
+					"description": "一个类定义包括（）",
+					"resId": "5e4f85088e1a9404f85e26bc",
+					"question": "一个类定义包括（）",
+					"exerciseType": "choice",
+					"subType": "multiple-choice",
+					"hint": "",
+					"errorHint": "",
+					"passHint": "",
+					"difficult": 1,
+					"tags": [
+						{
+							"_id": "5e4041b77b8d7058879912dd",
+							"title": "类",
+							"tagType": "知识点",
+							"tagTypeColor": "#4EC256",
+							"creator": 1,
+							"createAt": "2020-02-09T17:30:31.194Z",
+							"totalNum": 7
+						},
+						{
+							"_id": "5dc383743694024210689ea0",
+							"title": "Java语言",
+							"tagType": "语言",
+							"tagTypeColor": "#A6CEB1",
+							"creator": 1,
+							"createAt": "2019-11-07T02:37:40.064Z",
+							"totalNum": 226,
+							"updateAt": "2019-11-13T02:20:34.496Z",
+							"updater": null
+						}
+					],
+					"createdAt": "2020-08-19T07:27:38.639Z",
+					"creator": 1,
+					"note": "选择",
+					"notes": "",
+					"options": [
+						{
+							"id": "5e4f84a8473d3bcd00a63f83",
+							"isCorrect": false,
+							"option": "苹果",
+							"solution": "无",
+							"hint": ""
+						},
+						{
+							"id": "5e4f84b9473d3bcd00a63f84",
+							"isCorrect": true,
+							"option": "属性",
+							"solution": "无",
+							"hint": ""
+						},
+						{
+							"id": "5e4f84d9473d3bcd00a63f85",
+							"isCorrect": false,
+							"option": "价值观",
+							"solution": "无",
+							"hint": ""
+						},
+						{
+							"id": "5e4f84db473d3bcd00a63f86",
+							"isCorrect": true,
+							"option": "行为",
+							"solution": "无",
+							"hint": ""
+						}
+					],
+					"questionbank": [
+						{
+							"_id": "5dc37f0c3694024210689e98",
+							"name": "财专java练习集",
+							"totalNum": 355,
+							"owner": 1,
+							"createdAt": "2019-11-07T02:18:52.301Z",
+							"orgId": 1,
+							"collaborationDetail": [
+								{
+									"userId": 481,
+									"perms": [
+										"create",
+										"update",
+										"delete"
+									]
+								},
+								{
+									"userId": 475,
+									"perms": [
+										"delete",
+										"update",
+										"create"
+									]
+								},
+								{
+									"userId": 479,
+									"perms": [
+										"create",
+										"update",
+										"delete"
+									]
+								},
+								{
+									"userId": 480,
+									"perms": [
+										"delete",
+										"update",
+										"create"
+									]
+								},
+								{
+									"userId": 482,
+									"perms": [
+										"create",
+										"update",
+										"delete"
+									]
+								},
+								{
+									"userId": 473,
+									"perms": []
+								}
+							],
+							"collaborators": [
+								473,
+								481,
+								475,
+								479,
+								480,
+								482
+							],
+							"updatedAt": "2020-07-23T08:38:21.290Z",
+							"updater": 1
+						},
+						{
+							"_id": "5f06df4e3d5b3e44b11f439d",
+							"name": "C++题库",
+							"totalNum": 161,
+							"owner": 1,
+							"createdAt": "2020-07-09T09:11:42.054Z",
+							"orgId": 1,
+							"collaborationDetail": [
+								{
+									"userId": 481,
+									"perms": [
+										"create",
+										"update",
+										"delete"
+									]
+								},
+								{
+									"userId": 475,
+									"perms": [
+										"delete",
+										"update",
+										"create"
+									]
+								},
+								{
+									"userId": 479,
+									"perms": [
+										"create",
+										"update",
+										"delete"
+									]
+								},
+								{
+									"userId": 480,
+									"perms": [
+										"delete",
+										"update",
+										"create"
+									]
+								},
+								{
+									"userId": 482,
+									"perms": [
+										"create",
+										"update",
+										"delete"
+									]
+								},
+								{
+									"userId": 473,
+									"perms": []
+								}
+							],
+							"collaborators": [
+								473,
+								481,
+								475,
+								479,
+								480,
+								482
+							],
+							"updatedAt": "2020-07-23T08:38:21.290Z",
+							"updater": 1
+						}
+					],
+					"parsing": {
+						"type": "markdown",
+						"content": ""
+					},
+					"treeTags": [
+						{
+							"_id": "5f3b8392ff8bc53fcdec2510"
+						},
+						{
+							"_id": "5fda012cc975ca5b69c65163"
+						}
+					],
+					"explain": {
+						"content": "",
+						"type": "markdown",
+						"solutionMaterials": [],
+						"learningMaterials": []
+					},
+					"parentId": "5f3cd3c31153b73fbbed17e4",
+					"updatedAt": "2020-12-17T03:44:56.261Z",
+					"updatedor": 480,
+					"hasSolution": true,
+					"hasHint": false
+				}
+			}
+		},
+		"setting": {
+			"lessonId": "5e4f8c298e1a9404f85e26cf",
+			"status": "release",
+			"isAllowViewSolution": false,
+			"isAllowViewHint": false
+		},
+		"learnData": {
+			"aced": false,
+			"commitNum": 4,
+			"correct": true,
+			"correctAt": "2023-11-23T14:24:11.000Z",
+			"lessonId": "5e4f8c298e1a9404f85e26cf",
+			"lessonPath": "5e4f8c298e1a9404f85e26cf",
+			"score": 10,
+			"duration": 542001,
+			"timeConsuming": 0,
+			"correctNum": 1
+		},
+		"exercisesLearnData": {
+			"5e4f85088e1a9404f85e26bc": {
+				"aced": false,
+				"commitNum": 2,
+				"correctAnswer": {
+					"choices": [
+						"5e4f84b9473d3bcd00a63f84",
+						"5e4f84db473d3bcd00a63f86"
+					]
+				},
+				"confirm": false,
+				"score": 0,
+				"correctAt": "2023-11-23T14:24:11.000Z",
+				"lastAnswer": {
+					"choices": []
+				},
+				"debugTime": 4,
+				"isCorrect": true,
+				"result": {
+					"_id": "5e4f85088e1a9404f85e26bc",
+					"score": 0,
+					"detail": {
+						"options": []
+					},
+					"isJudge": true,
+					"subType": "multiple-choice",
+					"corrected": false
+				},
+				"lastScore": 0,
+				"comment": null,
+				"commentBy": null,
+				"commentAt": null
+			}
+		},
+		"documentLearnData": {},
+		"videoLearnData": {}
+	}
+}
