@@ -6,16 +6,16 @@ from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 import uluautil as ulua
 
-testdataPath = "./autodata"
+browserdataPath = "./autodata"
 logpath = "./log.txt"
 chromedriverPath = "./chromedriver.exe"
 
 
-def initize(browserdataPath: str, chromedriverPath: str):
+def initize():
 	"""
 	use relative path to script
 	"""
-	global logpath
+	global logpath, browserdataPath, chromedriverPath
 	os.chdir(os.path.dirname(os.path.abspath(__file__)))
 	browserdataPath = os.path.abspath(browserdataPath)
 	chromedriverPath = os.path.abspath(chromedriverPath)
@@ -118,4 +118,4 @@ def pushmisson(browser: webdriver.Chrome, lessonobj: ulua.lesson):
 
 
 if __name__ == "__main__":
-	main(initize(testdataPath, chromedriverPath))
+	main(initize())
