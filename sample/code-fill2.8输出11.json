@@ -1,0 +1,410 @@
+{
+	"ok": true,
+	"data": {
+		"lesson": {
+			"id": 5137,
+			"lessonId": "5e43d0854f503a0470aa806a",
+			"lessonPath": "shu-chu-11",
+			"coursewareId": "60221c7a9deec539c1367f8b",
+			"title": "5、输出11",
+			"type": "single",
+			"parentId": "5e8d963642bd916bded4a8dc",
+			"order": 28,
+			"status": "release",
+			"mustdo": false,
+			"description": "",
+			"orgId": 1,
+			"minutes": 5,
+			"existence": true,
+			"creator": 1,
+			"createdAt": "2021-02-09T05:24:10.000Z",
+			"updater": 480,
+			"updatedAt": "2021-06-10T07:49:45.000Z",
+			"exerciseNums": 1,
+			"scores": 10,
+			"level": 2,
+			"sourceResId": null,
+			"elements": [
+				{
+					"exerciseType": "code-fill",
+					"resourceId": "5e43d0784f503a0470aa8067",
+					"rid": null,
+					"score": 10,
+					"title": "填写空白以打印11",
+					"type": "exercise"
+				}
+			],
+			"files": [],
+			"knowledge": {
+				"content": "",
+				"type": ""
+			},
+			"exercises": {
+				"5e43d0784f503a0470aa8067": {
+					"_id": "620327e920993144508ad9a6",
+					"artificialJudge": false,
+					"title": "填写空白以打印11",
+					"description": "",
+					"resId": "5e43d0784f503a0470aa8067",
+					"question": "填写空白，以打印11。",
+					"exerciseType": "",
+					"subType": "code-fill",
+					"hint": "",
+					"tags": [
+						{
+							"_id": "5dde28a98ebb7f68240a075d",
+							"title": "运算符",
+							"tagType": "知识点",
+							"tagTypeColor": "#4EC256",
+							"creator": null,
+							"createAt": "2019-11-27T07:41:29.700Z",
+							"totalNum": 17
+						}
+					],
+					"errorHint": "",
+					"passHint": "",
+					"difficult": 1,
+					"createdAt": "2022-02-09T02:33:13.438Z",
+					"isRun": true,
+					"creator": 480,
+					"note": "",
+					"orgId": 1,
+					"notes": "",
+					"isCodeFill": true,
+					"questionbank": [
+						{
+							"_id": "5ee9895e677e4e2313567864",
+							"name": "Java语言考试题库",
+							"totalNum": 1239,
+							"owner": 1,
+							"createdAt": "2020-06-17T03:09:18.197Z",
+							"orgId": 1,
+							"collaborationDetail": [
+								{
+									"userId": 481,
+									"perms": [
+										"create",
+										"update",
+										"delete"
+									]
+								},
+								{
+									"userId": 475,
+									"perms": [
+										"delete",
+										"update",
+										"create"
+									]
+								},
+								{
+									"userId": 479,
+									"perms": [
+										"create",
+										"update",
+										"delete"
+									]
+								},
+								{
+									"userId": 480,
+									"perms": [
+										"delete",
+										"update",
+										"create"
+									]
+								},
+								{
+									"userId": 482,
+									"perms": [
+										"create",
+										"update",
+										"delete"
+									]
+								},
+								{
+									"userId": 473,
+									"perms": []
+								}
+							],
+							"collaborators": [
+								473,
+								481,
+								475,
+								479,
+								480,
+								482
+							],
+							"updatedAt": "2021-09-22T10:08:04.996Z",
+							"updater": 1,
+							"isPreset": true,
+							"presetOrg": [
+								323,
+								277,
+								175,
+								169,
+								165,
+								161,
+								117,
+								108,
+								119
+							],
+							"presetOrgDetail": [
+								{
+									"orgId": 323,
+									"perms": [
+										"use"
+									]
+								},
+								{
+									"orgId": 277,
+									"perms": [
+										"use"
+									]
+								},
+								{
+									"orgId": 175,
+									"perms": [
+										"use"
+									]
+								},
+								{
+									"orgId": 169,
+									"perms": [
+										"edit"
+									]
+								},
+								{
+									"orgId": 165,
+									"perms": [
+										"use"
+									]
+								},
+								{
+									"orgId": 161,
+									"perms": [
+										"use"
+									]
+								},
+								{
+									"orgId": 117,
+									"perms": [
+										"edit"
+									]
+								},
+								{
+									"orgId": 108,
+									"perms": [
+										"use"
+									]
+								},
+								{
+									"orgId": 119,
+									"perms": [
+										"edit"
+									],
+									"presetAt": "2021-09-22T10:08:04.996Z"
+								}
+							]
+						},
+						{
+							"_id": "5f4ccbdfc3bc0d7050407dfc",
+							"name": "Java语言总题库",
+							"totalNum": 2437,
+							"owner": 1,
+							"createdAt": "2020-08-31T10:07:27.708Z",
+							"orgId": 1,
+							"isPreset": true,
+							"presetOrg": [
+								396,
+								395,
+								102,
+								165,
+								353
+							],
+							"presetOrgDetail": [
+								{
+									"orgId": 396,
+									"perms": [
+										"edit"
+									]
+								},
+								{
+									"orgId": 395,
+									"perms": [
+										"edit"
+									]
+								},
+								{
+									"orgId": 102,
+									"perms": [
+										"use"
+									]
+								},
+								{
+									"orgId": 165,
+									"perms": [
+										"use"
+									],
+									"presetAt": "2021-11-26T13:34:52.558Z"
+								},
+								{
+									"orgId": 353,
+									"perms": [
+										"use"
+									],
+									"presetAt": "2021-11-30T03:17:41.164Z"
+								}
+							],
+							"updatedAt": "2021-11-30T03:17:41.164Z",
+							"updater": 1
+						},
+						{
+							"_id": "60389a9e128cc077763672ee",
+							"name": "Java语言题库（免费）",
+							"totalNum": 365,
+							"owner": 1,
+							"createdAt": "2021-02-26T06:52:14.905Z",
+							"orgId": 1,
+							"isPublic": true,
+							"updatedAt": "2021-02-26T07:32:01.394Z",
+							"updater": 1
+						},
+						{
+							"_id": "61cd9da9267f9d48fa87177e",
+							"name": "Java题库",
+							"totalNum": 105,
+							"owner": 82366,
+							"createdAt": "2021-12-30T11:53:13.079Z",
+							"orgId": 165,
+							"isPublic": false
+						}
+					],
+					"fillSourceCode": "public class Program\n{\n    public static void main(String args[])\n    {\n        int a = 10;\n        ++a;\n        System.out.println(a);\n    }\n}",
+					"fillBlanks": [
+						{
+							"id": "5e4ba75258dc3f5010bb1c0c",
+							"replaceCharacter": "++",
+							"matchMode": "loose_allMatch",
+							"matchRule": "++",
+							"scorePercentage": 1,
+							"inputLength": 2,
+							"maxCharacter": 5,
+							"blankHint": "",
+							"startPosition": 100,
+							"endPosition": 102,
+							"index": 0,
+							"blankId": "5e4ba75258dc3f5010bb1c0c"
+						}
+					],
+					"fillContent": "public class Program\n{\n    public static void main(String args[])\n    {\n        int a = 10;\n        <input id=\"5e4ba75258dc3f5010bb1c0c\" placeholder=\"[填空1]\" disabled style=\"width: 2em;\">a;\n        System.out.println(a);\n    }\n}",
+					"fillJudgemode": "exampleMatch",
+					"fillJudges": [
+						{
+							"conveyData": "",
+							"errorReason": "测试用例检查失败，实际输出不正确，与期望不符",
+							"feedback": "",
+							"functionsCall": "",
+							"hideInfo": "",
+							"id": "de1gaz83p1",
+							"mode": "output_match",
+							"precommon": "",
+							"presetBack": "",
+							"presetInput": "",
+							"presetOutput": "11",
+							"replace_main": "",
+							"rule": "{\"re\":\"\\\\D*11\\\\D*\"}",
+							"ruleFileName": "",
+							"scorePercentage": "1"
+						}
+					],
+					"language": "java",
+					"parsing": {
+						"type": "markdown",
+						"content": ""
+					},
+					"isJudge": true,
+					"preStdin": "",
+					"attachments": null,
+					"treeTags": [
+						{
+							"_id": "5fd9ee32c975ca5b69c65101"
+						}
+					],
+					"explain": {
+						"content": "",
+						"type": "markdown",
+						"solutionMaterials": [],
+						"learningMaterials": []
+					},
+					"parentId": "620327cf20993144508ad9a5",
+					"hasSolution": true,
+					"hasHint": false
+				}
+			}
+		},
+		"setting": {
+			"lessonId": "5e43d0854f503a0470aa806a",
+			"status": "release",
+			"isAllowViewSolution": false,
+			"isAllowViewHint": false
+		},
+		"learnData": {
+			"aced": true,
+			"commitNum": 1,
+			"correct": true,
+			"correctAt": "2023-11-21T13:41:40.000Z",
+			"lessonId": "5e43d0854f503a0470aa806a",
+			"lessonPath": "5e43d0854f503a0470aa806a",
+			"score": 10,
+			"duration": 12824,
+			"timeConsuming": 0,
+			"correctNum": 1
+		},
+		"exercisesLearnData": {
+			"5e43d0784f503a0470aa8067": {
+				"aced": true,
+				"commitNum": 1,
+				"correctAnswer": {
+					"options": [
+						{
+							"id": "5e4ba75258dc3f5010bb1c0c",
+							"content": "++"
+						}
+					],
+					"filledCode": "public class Program\n{\n    public static void main(String args[])\n    {\n        int a = 10;\n        ++a;\n        System.out.println(a);\n    }\n}"
+				},
+				"confirm": false,
+				"score": 10,
+				"correctAt": "2023-11-21T13:41:40.000Z",
+				"lastAnswer": {
+					"options": [
+						{
+							"id": "5e4ba75258dc3f5010bb1c0c",
+							"content": "++"
+						}
+					],
+					"filledCode": "public class Program\n{\n    public static void main(String args[])\n    {\n        int a = 10;\n        ++a;\n        System.out.println(a);\n    }\n}"
+				},
+				"debugTime": 1,
+				"isCorrect": true,
+				"result": {
+					"_id": "5e43d0784f503a0470aa8067",
+					"score": 10,
+					"detail": {
+						"options": []
+					},
+					"isJudge": true,
+					"subType": "code-fill",
+					"compiled": true,
+					"corrected": true,
+					"scorePercent": 0
+				},
+				"lastScore": 10,
+				"comment": null,
+				"commentBy": null,
+				"commentAt": null
+			}
+		},
+		"documentLearnData": {},
+		"videoLearnData": {}
+	}
+}

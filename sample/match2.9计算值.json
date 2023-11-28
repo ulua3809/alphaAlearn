@@ -1,0 +1,481 @@
+{
+	"ok": true,
+	"data": {
+		"lesson": {
+			"id": 5138,
+			"lessonId": "5e43d2e94f503a0470aa808c",
+			"lessonPath": "ji-suan-zhi",
+			"coursewareId": "60221c7a9deec539c1367f8b",
+			"title": "6、计算值",
+			"type": "single",
+			"parentId": "5e8d963642bd916bded4a8dc",
+			"order": 29,
+			"status": "release",
+			"mustdo": false,
+			"description": "",
+			"orgId": 1,
+			"minutes": 5,
+			"existence": true,
+			"creator": 1,
+			"createdAt": "2021-02-09T05:24:10.000Z",
+			"updater": 480,
+			"updatedAt": "2021-06-10T07:49:45.000Z",
+			"exerciseNums": 1,
+			"scores": 10,
+			"level": 2,
+			"sourceResId": null,
+			"elements": [
+				{
+					"exerciseType": "match",
+					"resourceId": "5e440a2a4f503a0470aa840b",
+					"rid": null,
+					"score": 10,
+					"title": "表达式计算",
+					"type": "exercise"
+				}
+			],
+			"files": [],
+			"knowledge": {
+				"content": "",
+				"type": ""
+			},
+			"exercises": {
+				"5e440a2a4f503a0470aa840b": {
+					"_id": "5e440a3a4f503a0470aa840e",
+					"artificialJudge": false,
+					"title": "表达式计算",
+					"description": "",
+					"resId": "5e440a2a4f503a0470aa840b",
+					"question": "计算以下表达式，并将计算结果拖动到表格中。",
+					"exerciseType": "",
+					"subType": "match",
+					"hint": "",
+					"tags": [
+						{
+							"_id": "5dde28a98ebb7f68240a075d",
+							"title": "运算符",
+							"tagType": "知识点",
+							"tagTypeColor": "#4EC256",
+							"creator": null,
+							"createAt": "2019-11-27T07:41:29.700Z",
+							"totalNum": 19
+						},
+						{
+							"_id": "5dc383743694024210689ea0",
+							"title": "Java语言",
+							"tagType": "语言",
+							"tagTypeColor": "#A6CEB1",
+							"creator": 1,
+							"createAt": "2019-11-07T02:37:40.064Z",
+							"totalNum": 194,
+							"updateAt": "2019-11-13T02:20:34.496Z",
+							"updater": null
+						}
+					],
+					"errorHint": "",
+					"passHint": "",
+					"difficult": 1,
+					"createdAt": "2020-02-12T14:22:50.704Z",
+					"creator": 1,
+					"note": "匹配题",
+					"notes": "",
+					"questionbank": [
+						{
+							"_id": "5dc37f0c3694024210689e98",
+							"name": "财专java练习集",
+							"totalNum": 199,
+							"owner": 1,
+							"createdAt": "2019-11-07T02:18:52.301Z"
+						}
+					],
+					"matchAnswers": [
+						{
+							"title": "1 + 2 + 3",
+							"items": [
+								{
+									"id": "5e4407f7793d0538f0ec5d7e",
+									"name": "6"
+								}
+							],
+							"scorePercentage": 1
+						},
+						{
+							"title": "(4 + 8) / 2",
+							"items": [
+								{
+									"id": "5e4407f7793d0538f0ec5d7e",
+									"name": "6"
+								}
+							],
+							"scorePercentage": 1
+						},
+						{
+							"title": "9 * 5",
+							"items": [
+								{
+									"id": "5e440869793d0538f0ec5d80",
+									"name": "45"
+								}
+							],
+							"scorePercentage": 1
+						},
+						{
+							"title": "15 / 12",
+							"items": [
+								{
+									"id": "5e440886793d0538f0ec5d81",
+									"name": "1"
+								}
+							],
+							"scorePercentage": 1
+						},
+						{
+							"title": "5 % 2",
+							"items": [
+								{
+									"id": "5e440886793d0538f0ec5d81",
+									"name": "1"
+								}
+							],
+							"scorePercentage": 1
+						},
+						{
+							"title": "6 % 6",
+							"items": [
+								{
+									"id": "5e440954793d0538f0ec5d83",
+									"name": "0"
+								}
+							],
+							"scorePercentage": 1
+						},
+						{
+							"title": "0 % 7",
+							"items": [
+								{
+									"id": "5e440954793d0538f0ec5d83",
+									"name": "0"
+								}
+							],
+							"scorePercentage": 1
+						},
+						{
+							"title": "15/12.0",
+							"items": [
+								{
+									"id": "5e440915793d0538f0ec5d82",
+									"name": "1.25"
+								}
+							],
+							"scorePercentage": 1
+						}
+					],
+					"matchItems": [
+						{
+							"id": "5e4407f7793d0538f0ec5d7e",
+							"name": "6"
+						},
+						{
+							"id": "5e44080d793d0538f0ec5d7f",
+							"name": "6.0"
+						},
+						{
+							"id": "5e440869793d0538f0ec5d80",
+							"name": "45"
+						},
+						{
+							"id": "5e440886793d0538f0ec5d81",
+							"name": "1"
+						},
+						{
+							"id": "5e440915793d0538f0ec5d82",
+							"name": "1.25"
+						},
+						{
+							"id": "5e440954793d0538f0ec5d83",
+							"name": "0"
+						},
+						{
+							"id": "5e4409d4793d0538f0ec5d85",
+							"name": "6"
+						},
+						{
+							"id": "5e4409d9793d0538f0ec5d86",
+							"name": "1"
+						},
+						{
+							"id": "5e4409e9793d0538f0ec5d87",
+							"name": "0"
+						},
+						{
+							"id": "5e4409f1793d0538f0ec5d88",
+							"name": "1.25"
+						},
+						{
+							"id": "5e440a17793d0538f0ec5d89",
+							"name": "4.5"
+						},
+						{
+							"id": "5e440a20793d0538f0ec5d8a",
+							"name": "0.8"
+						}
+					],
+					"parentId": "5e440a2a4f503a0470aa840c",
+					"treeTags": [
+						{
+							"_id": "5fd9ee32c975ca5b69c65101"
+						}
+					],
+					"updatedAt": "2020-12-17T02:53:15.065Z",
+					"updatedor": 480,
+					"hasSolution": true,
+					"hasHint": false
+				}
+			}
+		},
+		"setting": {
+			"lessonId": "5e43d2e94f503a0470aa808c",
+			"status": "release",
+			"isAllowViewSolution": false,
+			"isAllowViewHint": false
+		},
+		"learnData": {
+			"aced": true,
+			"commitNum": 1,
+			"correct": true,
+			"correctAt": "2023-11-22T07:33:52.000Z",
+			"lessonId": "5e43d2e94f503a0470aa808c",
+			"lessonPath": "5e43d2e94f503a0470aa808c",
+			"score": 10,
+			"duration": 326909,
+			"timeConsuming": 131343,
+			"correctNum": 1
+		},
+		"exercisesLearnData": {
+			"5e440a2a4f503a0470aa840b": {
+				"aced": true,
+				"commitNum": 1,
+				"correctAnswer": [
+					{
+						"items": [
+							{
+								"id": "5e4407f7793d0538f0ec5d7e",
+								"name": "6"
+							}
+						],
+						"title": "1 + 2 + 3"
+					},
+					{
+						"items": [
+							{
+								"id": "5e4407f7793d0538f0ec5d7e",
+								"name": "6"
+							}
+						],
+						"title": "(4 + 8) / 2"
+					},
+					{
+						"items": [
+							{
+								"id": "5e440869793d0538f0ec5d80",
+								"name": "45"
+							}
+						],
+						"title": "9 * 5"
+					},
+					{
+						"items": [
+							{
+								"id": "5e440886793d0538f0ec5d81",
+								"name": "1"
+							}
+						],
+						"title": "15 / 12"
+					},
+					{
+						"items": [
+							{
+								"id": "5e440886793d0538f0ec5d81",
+								"name": "1"
+							}
+						],
+						"title": "5 % 2"
+					},
+					{
+						"items": [
+							{
+								"id": "5e440954793d0538f0ec5d83",
+								"name": "0"
+							}
+						],
+						"title": "6 % 6"
+					},
+					{
+						"items": [
+							{
+								"id": "5e440954793d0538f0ec5d83",
+								"name": "0"
+							}
+						],
+						"title": "0 % 7"
+					},
+					{
+						"items": [
+							{
+								"id": "5e4409f1793d0538f0ec5d88",
+								"name": "1.25"
+							}
+						],
+						"title": "15/12.0"
+					}
+				],
+				"confirm": false,
+				"score": 10,
+				"correctAt": "2023-11-22T07:33:52.000Z",
+				"lastAnswer": [
+					{
+						"items": [
+							{
+								"id": "5e4407f7793d0538f0ec5d7e",
+								"name": "6"
+							}
+						],
+						"title": "1 + 2 + 3"
+					},
+					{
+						"items": [
+							{
+								"id": "5e4407f7793d0538f0ec5d7e",
+								"name": "6"
+							}
+						],
+						"title": "(4 + 8) / 2"
+					},
+					{
+						"items": [
+							{
+								"id": "5e440869793d0538f0ec5d80",
+								"name": "45"
+							}
+						],
+						"title": "9 * 5"
+					},
+					{
+						"items": [
+							{
+								"id": "5e440886793d0538f0ec5d81",
+								"name": "1"
+							}
+						],
+						"title": "15 / 12"
+					},
+					{
+						"items": [
+							{
+								"id": "5e440886793d0538f0ec5d81",
+								"name": "1"
+							}
+						],
+						"title": "5 % 2"
+					},
+					{
+						"items": [
+							{
+								"id": "5e440954793d0538f0ec5d83",
+								"name": "0"
+							}
+						],
+						"title": "6 % 6"
+					},
+					{
+						"items": [
+							{
+								"id": "5e440954793d0538f0ec5d83",
+								"name": "0"
+							}
+						],
+						"title": "0 % 7"
+					},
+					{
+						"items": [
+							{
+								"id": "5e4409f1793d0538f0ec5d88",
+								"name": "1.25"
+							}
+						],
+						"title": "15/12.0"
+					}
+				],
+				"debugTime": 1,
+				"isCorrect": true,
+				"result": {
+					"_id": "5e440a2a4f503a0470aa840b",
+					"score": 10,
+					"detail": {
+						"feedbacks": {
+							"matchInfo": [
+								{
+									"isMatch": true,
+									"matchedIndexs": [
+										0
+									]
+								},
+								{
+									"isMatch": true,
+									"matchedIndexs": [
+										0
+									]
+								},
+								{
+									"isMatch": true,
+									"matchedIndexs": [
+										0
+									]
+								},
+								{
+									"isMatch": true,
+									"matchedIndexs": [
+										0
+									]
+								},
+								{
+									"isMatch": true,
+									"matchedIndexs": [
+										0
+									]
+								},
+								{
+									"isMatch": true,
+									"matchedIndexs": [
+										0
+									]
+								},
+								{
+									"isMatch": true,
+									"matchedIndexs": [
+										0
+									]
+								},
+								{
+									"isMatch": true,
+									"matchedIndexs": [
+										0
+									]
+								}
+							]
+						}
+					},
+					"subType": "match",
+					"compiled": false,
+					"corrected": true
+				},
+				"lastScore": 10,
+				"comment": null,
+				"commentBy": null,
+				"commentAt": null
+			}
+		},
+		"documentLearnData": {},
+		"videoLearnData": {}
+	}
+}

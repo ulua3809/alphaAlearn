@@ -1,0 +1,57 @@
+{
+	"ok": true,
+	"data": {
+		"lesson": {
+			"id": 5140,
+			"lessonId": "5e43d40c4f503a0470aa80a1",
+			"lessonPath": "huo-qu-yong-hu-shu-ru",
+			"coursewareId": "60221c7a9deec539c1367f8b",
+			"title": "获取用户输入",
+			"type": "document",
+			"parentId": "5e8d963642bd916bded4a8dc",
+			"order": 31,
+			"status": "release",
+			"mustdo": false,
+			"description": "\n尽管Java提供了许多不同的方法来获取用户输入，但Scanner对象是最常见的，也许也是最容易实现的。\n\n导入Scanner类以使用Scanner对象，如下所示:\n```java\nimport java.util.Scanner; \n```\n为了使用Scanner类，请使用以下语法创建该类的实例:\n```java\nScanner input = new Scanner（System.in); \n```\n\n现在，您可以读取用户输入的各种输入数据。下面是一些通过Scanner类可用的方法：\n\n* Read an int :nextInt()\n* Read a float:nextFloat()\n* Read a double:nextDouble()\n* Read a complete line：nextLine()\n* Read a word：next()\n\n\n### 用于获取用户输入的程序示例：\n```java\nimport java.util.Scanner; \n\nclass Programe{ \n  public static  void main(String [] args){ \n    Scanner input = new Scanner(System.in); \n    System.out.println（input.nextLine());        \n  } \n}\n```",
+			"orgId": 1,
+			"minutes": 5,
+			"existence": true,
+			"creator": 1,
+			"createdAt": "2021-02-09T05:24:10.000Z",
+			"updater": 480,
+			"updatedAt": "2021-06-10T07:49:45.000Z",
+			"exerciseNums": 0,
+			"scores": 0,
+			"level": 2,
+			"sourceResId": null,
+			"elements": [],
+			"files": [],
+			"knowledge": {
+				"content": "",
+				"type": ""
+			},
+			"exercises": {}
+		},
+		"setting": {
+			"lessonId": "5e43d40c4f503a0470aa80a1",
+			"status": "release",
+			"isAllowViewSolution": false,
+			"isAllowViewHint": false
+		},
+		"learnData": {
+			"aced": true,
+			"commitNum": 1,
+			"correct": true,
+			"correctAt": "2023-11-25T04:25:07.000Z",
+			"lessonId": "5e43d40c4f503a0470aa80a1",
+			"lessonPath": "5e43d40c4f503a0470aa80a1",
+			"score": 0,
+			"duration": 422925,
+			"timeConsuming": null,
+			"correctNum": 1
+		},
+		"exercisesLearnData": {},
+		"documentLearnData": {},
+		"videoLearnData": {}
+	}
+}

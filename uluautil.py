@@ -1,7 +1,10 @@
+from fileinput import filename
 import json
 import time
+import pyperclip
 from selenium import webdriver
 from selenium.webdriver.common.by import By
+from selenium.webdriver.common.keys import Keys
 
 
 class perfLog:
@@ -130,8 +133,14 @@ class lesson:
 			return videoAndDoc(self._resbody, webdriverObj=webdriverObj)
 		elif self.getlessontype() in ["single-choice", "multiple-choice", "judgment"]:
 			return Choice(self._resbody, webdriverObj=webdriverObj)
-		elif self.getlessontype() in ["code-fill"]:
+		elif self.getlessontype() == "code-fill":
 			return codeFill(self._resbody, webdriverObj=webdriverObj)
+		elif self.getlessontype() == "programming":
+			return programming(self._resbody, webdriverObj=webdriverObj)
+		elif self.getlessontype() == "short-answer":
+			return shortAnswer(self._resbody, webdriverObj=webdriverObj)
+		elif self.getlessontype() == "match":
+			return match(self._resbody, webdriverObj=webdriverObj)
 		else:
 			return misson(self._resbody, webdriverObj=webdriverObj)
 
@@ -183,14 +192,6 @@ class misson():
 					nextBtn = self._webdriverObj.find_element(
 					    by="xpath", value="/html/body/div[1]/div/div/div[1]/div[2]/div/button[3]")
 					nextBtn.click()
-
-	def codenext(self):
-		if self._webdriverObj:
-			comitBtn = self._webdriverObj.find_element(
-			    By.CSS_SELECTOR,
-			    "[class='font-medium whitespace-nowrap  rounded border focus:ring-2 focus:outline-none  text-blue-700 border-transparent bg-blue-100 hover:bg-blue-200 focus:ring-primary-500  focus:ring-offset-1 px-4 py-2 text-sm inline-flex items-center justify-center']"
-			)
-			comitBtn.click()
 
 	def learn(self):
 		if self.missonmatched():
@@ -253,19 +254,18 @@ class Choice(misson):
 
 
 class codeFill(misson):
+	_comitBtnClass = "font-medium whitespace-nowrap shadow-sm rounded border focus:ring-2 focus:outline-none border-transparent text-white bg-success-600 hover:bg-success-700 focus:ring-primary-500 focus:ring-offset-1 px-4 py-2 text-sm inline-flex items-center justify-center"
+	_nextBtnClass = "font-medium whitespace-nowrap  rounded border focus:ring-2 focus:outline-none  text-blue-700 border-transparent bg-blue-100 hover:bg-blue-200 focus:ring-primary-500  focus:ring-offset-1 px-4 py-2 text-sm inline-flex items-center justify-center"
+	_waittime = 5
 
 	def commit(self):
 		if self._webdriverObj:
-			comitBtn = self._webdriverObj.find_element(
-			    By.CSS_SELECTOR,
-			    "[class='font-medium whitespace-nowrap shadow-sm rounded border focus:ring-2 focus:outline-none border-transparent text-white bg-success-600 hover:bg-success-700 focus:ring-primary-500 focus:ring-offset-1 px-4 py-2 text-sm inline-flex items-center justify-center']"
-			)
+			comitBtn = self._webdriverObj.find_element(By.CSS_SELECTOR,
+			                                           "[class='{}']".format(self._comitBtnClass))
 			comitBtn.click()
-			time.sleep(5)
-			nextBtn = self._webdriverObj.find_element(
-			    By.CSS_SELECTOR,
-			    "[class='font-medium whitespace-nowrap  rounded border focus:ring-2 focus:outline-none  text-blue-700 border-transparent bg-blue-100 hover:bg-blue-200 focus:ring-primary-500  focus:ring-offset-1 px-4 py-2 text-sm inline-flex items-center justify-center']"
-			)
+			time.sleep(self._waittime)
+			nextBtn = self._webdriverObj.find_element(By.CSS_SELECTOR,
+			                                          "[class='{}']".format(self._nextBtnClass))
 			nextBtn.click()
 
 	def learn(self):
@@ -289,6 +289,104 @@ class codeFill(misson):
 				time.sleep(2)
 				if self.missonmatched():
 					self.commit()
-					time.sleep(15)
+
+
+class programming(codeFill):
+	_comitBtnClass = "font-medium whitespace-nowrap shadow-sm rounded border focus:ring-2 focus:outline-none border-transparent text-white bg-primary-600 hover:bg-primary-700 focus:ring-primary-500 focus:ring-offset-1 px-4 py-2 text-sm inline-flex items-center justify-center el-tooltip__trigger"
+	_nextBtnClass = "font-medium whitespace-nowrap  rounded border focus:ring-2 focus:outline-none  text-blue-700 border-transparent bg-blue-100 hover:bg-blue-200 focus:ring-primary-500  focus:ring-offset-1 px-4 py-2 text-sm inline-flex items-center justify-center"
+	_waittime = 8
+
+	def learn(self):
+
+		if self.missonmatched():
+			if self.isLearned():
+				print("arlready learned skip")
+				self.nextmisson()
+				return None
+			if self._resbody["data"]["lesson"]["exercises"][self.getresourceId()]["codeSolutions"]:
+				print("unsupport muilt file ,analize answer")
+				for file in self._resbody["data"]["lesson"]["exercises"][
+				    self.getresourceId()]["codeSolutions"]:
+					fileName = file["fileName"]
+					answer = file["code"]
+					print("-" * 50)
+					print("文件名：{}".format(fileName))
+					print("-" * 50)
+					print("解法\n{}".format(answer))
+					print("-" * 50)
+				time.sleep(300)
 				if self.missonmatched():
-					self.codenext()
+					self.nextmisson()
+			answer: str = self._resbody["data"]["lesson"]["exercises"][
+			    self.getresourceId()]["codeSolution"]
+			if self._webdriverObj:
+				self._webdriverObj.implicitly_wait(2)
+				textBox = self._webdriverObj.find_element(By.CSS_SELECTOR, ".CodeMirror-lines")
+				textBox.click()
+				textBox = self._webdriverObj.switch_to.active_element
+				textBox.send_keys(Keys.CONTROL, "a")
+				textBox.send_keys(Keys.BACKSPACE)
+				pyperclip.copy(answer)
+				textBox.send_keys(Keys.CONTROL, "v")
+				print("-" * 50)
+				print("解法\n{}".format(answer))
+				print("-" * 50)
+				time.sleep(3)
+				if self.missonmatched():
+					self.commit()
+
+
+class shortAnswer(Choice):
+
+	def learn(self):
+		textLocClass = "markdown-editor border flex overflow-hidden h-full"
+		answer: str = self._resbody["data"]["lesson"]["exercises"][
+		    self.getresourceId()]["answers"]["answer"]
+
+		if self.missonmatched():
+			if self.isLearned():
+				print("arlready learned skip")
+				self.nextmisson()
+				return None
+			if self._webdriverObj:
+				self._webdriverObj.implicitly_wait(2)
+				textBox = self._webdriverObj.find_element(By.CSS_SELECTOR,
+				                                          "[class='{}']".format(textLocClass))
+				textBox.click()
+				textBox = self._webdriverObj.switch_to.active_element
+				textBox.send_keys(Keys.CONTROL, "a")
+				textBox.send_keys(Keys.BACKSPACE)
+				pyperclip.copy(answer)
+				textBox.send_keys(Keys.CONTROL, "v")
+				print("-" * 50)
+				print("解法\n{}".format(answer))
+				print("-" * 50)
+				time.sleep(3)
+				if self.missonmatched():
+					# self.commit()
+					# time.sleep(4)
+					# self.nextmisson()
+					pass
+
+
+class match(misson):
+
+	def learn(self):
+		if self.isLearned():
+			print("arlready learned skip")
+			self.nextmisson()
+			return None
+		print("unsupport type ,analize answer")
+		for ans in self._resbody["data"]["lesson"]["exercises"][
+		    self.getresourceId()]["matchAnswers"]:
+			title = ans["title"]
+			items = []
+			for obj in ans["items"]:
+				items.append(obj["name"])
+			print("-" * 50)
+			print("组：{}".format(title))
+			print("选项\n{}".format(items))
+			print("-" * 50)
+		time.sleep(300)
+		if self.missonmatched():
+			self.nextmisson()
