@@ -87,8 +87,7 @@ class lesson:
 			if self._resbody["data"]["lesson"]["elements"][0]["exerciseType"] == "single-choice":
 				return "single-choice"
 			# 多选题
-			elif self._resbody["data"]["lesson"]["elements"][0][
-			    "exerciseType"] == "multiple-choice":
+			elif self._resbody["data"]["lesson"]["elements"][0]["exerciseType"] == "multiple-choice":
 				return "multiple-choice"
 			# 判断题
 			elif self._resbody["data"]["lesson"]["elements"][0]["exerciseType"] == "judgment":
@@ -189,8 +188,8 @@ class misson():
 		if self.missonmatched():
 			if self._webdriverObj:
 				if self.missonmatched():
-					nextBtn = self._webdriverObj.find_element(
-					    by="xpath", value="/html/body/div[1]/div/div/div[1]/div[2]/div/button[3]")
+					nextBtn = self._webdriverObj.find_element(by="xpath",
+					                                          value="/html/body/div[1]/div/div/div[1]/div[2]/div/button[3]")
 					nextBtn.click()
 
 	def learn(self):
@@ -233,8 +232,7 @@ class Choice(misson):
 	def learn(self):
 		if self.missonmatched():
 			answerid = []
-			for opt in self._resbody["data"]["lesson"]["exercises"][
-			    self.getresourceId()]["options"]:
+			for opt in self._resbody["data"]["lesson"]["exercises"][self.getresourceId()]["options"]:
 				if opt["isCorrect"]:
 					answerid.append(opt["id"])
 					print("正确选项：", opt["option"])
@@ -260,19 +258,16 @@ class codeFill(misson):
 
 	def commit(self):
 		if self._webdriverObj:
-			comitBtn = self._webdriverObj.find_element(By.CSS_SELECTOR,
-			                                           "[class='{}']".format(self._comitBtnClass))
+			comitBtn = self._webdriverObj.find_element(By.CSS_SELECTOR, "[class='{}']".format(self._comitBtnClass))
 			comitBtn.click()
 			time.sleep(self._waittime)
-			nextBtn = self._webdriverObj.find_element(By.CSS_SELECTOR,
-			                                          "[class='{}']".format(self._nextBtnClass))
+			nextBtn = self._webdriverObj.find_element(By.CSS_SELECTOR, "[class='{}']".format(self._nextBtnClass))
 			nextBtn.click()
 
 	def learn(self):
 		if self.missonmatched():
 			fillDict = {}
-			for ans in self._resbody["data"]["lesson"]["exercises"][
-			    self.getresourceId()]["fillBlanks"]:
+			for ans in self._resbody["data"]["lesson"]["exercises"][self.getresourceId()]["fillBlanks"]:
 				fillDict[ans["id"]] = ans["matchRule"]
 				print("blank id {},fill {}".format(ans["id"], ans["matchRule"]))
 			if self._webdriverObj:
@@ -282,8 +277,7 @@ class codeFill(misson):
 					return None
 				self._webdriverObj.implicitly_wait(2)
 				for blkid in fillDict:
-					textBox = self._webdriverObj.find_element(
-					    By.XPATH, '//*[@id="{}"]/div/input'.format(blkid))
+					textBox = self._webdriverObj.find_element(By.XPATH, '//*[@id="{}"]/div/input'.format(blkid))
 					textBox.clear()
 					textBox.send_keys(fillDict[blkid])
 				time.sleep(2)
@@ -292,36 +286,81 @@ class codeFill(misson):
 
 
 class programming(codeFill):
+	_codeAns = ""
 	_comitBtnClass = "font-medium whitespace-nowrap shadow-sm rounded border focus:ring-2 focus:outline-none border-transparent text-white bg-primary-600 hover:bg-primary-700 focus:ring-primary-500 focus:ring-offset-1 px-4 py-2 text-sm inline-flex items-center justify-center el-tooltip__trigger"
 	_nextBtnClass = "font-medium whitespace-nowrap  rounded border focus:ring-2 focus:outline-none  text-blue-700 border-transparent bg-blue-100 hover:bg-blue-200 focus:ring-primary-500  focus:ring-offset-1 px-4 py-2 text-sm inline-flex items-center justify-center"
-	_waittime = 8
+	_waittime = 15
+
+	def ismultiFile(self):
+		if self._resbody["data"]["lesson"]["exercises"][self.getresourceId()]["codeSolutions"]:
+			anslist: list = self._resbody["data"]["lesson"]["exercises"][self.getresourceId()]["codeSolutions"]
+			showLists = []
+			cslist: list = self._resbody["data"]["lesson"]["exercises"][self.getresourceId()]["precommonCode"]
+			for pset in cslist:
+				if pset["hide"] == False:
+					showLists.append(pset["fileName"])
+			if len(showLists) == 1:
+				for ans in anslist:
+					if ans["fileName"] == showLists[0]:
+						self._codeAns = ans["code"]
+				return False
+			else:
+				return True
+		return False
 
 	def learn(self):
+		if self.missonmatched():
+			if self.isLearned():
+				print("arlready learned skip")
+				self.nextmisson()
+				return None
+			if self.ismultiFile():
+				print("unsupport muilt file ,analize answer")
+				for file in self._resbody["data"]["lesson"]["exercises"][self.getresourceId()]["codeSolutions"]:
+					fileName = file["fileName"]
+					answer = file["code"]
+					print("-" * 50)
+					print("文件名：{}".format(fileName))
+					print("-" * 50)
+					print(answer)
+					print("-" * 50)
+				time.sleep(300)
+				if self.missonmatched():
+					self.nextmisson()
+			if self._codeAns == "":
+				self._codeAns: str = self._resbody["data"]["lesson"]["exercises"][self.getresourceId()]["codeSolution"]
+			if self._webdriverObj:
+				self._webdriverObj.implicitly_wait(2)
+				if self.missonmatched():
+					textBox = self._webdriverObj.find_element(By.CSS_SELECTOR, ".CodeMirror-lines")
+					textBox.click()
+					textBox = self._webdriverObj.switch_to.active_element
+					textBox.send_keys(Keys.CONTROL, "a")
+					textBox.send_keys(Keys.BACKSPACE)
+					pyperclip.copy(self._codeAns)
+					textBox.send_keys(Keys.CONTROL, "v")
+					print("-" * 50)
+					print("解法\n{}".format(self._codeAns))
+					print("-" * 50)
+					time.sleep(3)
+					if self.missonmatched():
+						self.commit()
+
+
+class shortAnswer(Choice):
+
+	def learn(self):
+		textLocClass = "markdown-editor border flex overflow-hidden h-full"
+		answer: str = self._resbody["data"]["lesson"]["exercises"][self.getresourceId()]["answers"]["answer"]
 
 		if self.missonmatched():
 			if self.isLearned():
 				print("arlready learned skip")
 				self.nextmisson()
 				return None
-			if self._resbody["data"]["lesson"]["exercises"][self.getresourceId()]["codeSolutions"]:
-				print("unsupport muilt file ,analize answer")
-				for file in self._resbody["data"]["lesson"]["exercises"][
-				    self.getresourceId()]["codeSolutions"]:
-					fileName = file["fileName"]
-					answer = file["code"]
-					print("-" * 50)
-					print("文件名：{}".format(fileName))
-					print("-" * 50)
-					print("解法\n{}".format(answer))
-					print("-" * 50)
-				time.sleep(300)
-				if self.missonmatched():
-					self.nextmisson()
-			answer: str = self._resbody["data"]["lesson"]["exercises"][
-			    self.getresourceId()]["codeSolution"]
 			if self._webdriverObj:
 				self._webdriverObj.implicitly_wait(2)
-				textBox = self._webdriverObj.find_element(By.CSS_SELECTOR, ".CodeMirror-lines")
+				textBox = self._webdriverObj.find_element(By.CSS_SELECTOR, "[class='{}']".format(textLocClass))
 				textBox.click()
 				textBox = self._webdriverObj.switch_to.active_element
 				textBox.send_keys(Keys.CONTROL, "a")
@@ -334,39 +373,8 @@ class programming(codeFill):
 				time.sleep(3)
 				if self.missonmatched():
 					self.commit()
-
-
-class shortAnswer(Choice):
-
-	def learn(self):
-		textLocClass = "markdown-editor border flex overflow-hidden h-full"
-		answer: str = self._resbody["data"]["lesson"]["exercises"][
-		    self.getresourceId()]["answers"]["answer"]
-
-		if self.missonmatched():
-			if self.isLearned():
-				print("arlready learned skip")
-				self.nextmisson()
-				return None
-			if self._webdriverObj:
-				self._webdriverObj.implicitly_wait(2)
-				textBox = self._webdriverObj.find_element(By.CSS_SELECTOR,
-				                                          "[class='{}']".format(textLocClass))
-				textBox.click()
-				textBox = self._webdriverObj.switch_to.active_element
-				textBox.send_keys(Keys.CONTROL, "a")
-				textBox.send_keys(Keys.BACKSPACE)
-				pyperclip.copy(answer)
-				textBox.send_keys(Keys.CONTROL, "v")
-				print("-" * 50)
-				print("解法\n{}".format(answer))
-				print("-" * 50)
-				time.sleep(3)
-				if self.missonmatched():
-					# self.commit()
-					# time.sleep(4)
-					# self.nextmisson()
-					pass
+					time.sleep(4)
+					self.nextmisson()
 
 
 class match(misson):
@@ -377,8 +385,7 @@ class match(misson):
 			self.nextmisson()
 			return None
 		print("unsupport type ,analize answer")
-		for ans in self._resbody["data"]["lesson"]["exercises"][
-		    self.getresourceId()]["matchAnswers"]:
+		for ans in self._resbody["data"]["lesson"]["exercises"][self.getresourceId()]["matchAnswers"]:
 			title = ans["title"]
 			items = []
 			for obj in ans["items"]:
