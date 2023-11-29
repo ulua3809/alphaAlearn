@@ -9,7 +9,7 @@ import uluautil as ulua
 browserdataPath = "./autodata"
 logpath = "./log.txt"
 chromedriverPath = "./chromedriver.exe"
-
+browserExecPath ="C:\\Program Files\\BraveSoftware\\Brave-Browser\\Application\\brave.exe"
 
 def initize():
 	"""
@@ -25,7 +25,7 @@ def initize():
 	# initize driver
 	service = Service(executable_path=chromedriverPath)
 	chopt = webdriver.ChromeOptions()
-	chopt.binary_location = "C:\\Program Files\\BraveSoftware\\Brave-Browser\\Application\\brave.exe"
+	chopt.binary_location = browserExecPath
 	#屏蔽webdrive检测
 	chopt.add_argument("--disable-web-security")
 	chopt.add_argument("--allow-running-insecure-content")
