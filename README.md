@@ -2,8 +2,6 @@
 
 ## alpha coding Autolearning script powered by python
 
-[TOC]
-
 # support states
 
 | mission Type           | states |
