@@ -118,9 +118,12 @@ class lesson:
 		return self.resbody["data"]["learnData"]["duration"]
 
 	def isLearned(self) -> bool:
+		return False
 		return self.resbody["data"]["learnData"]["aced"]
 
 	def getmissonObj(self, webdriverObj: webdriver.Chrome):
+		if True:
+			return videoAndDoc(self.resbody, webdriverObj=webdriverObj)
 		if self.getlessontype() in ["video", "document"]:
 			return videoAndDoc(self.resbody, webdriverObj=webdriverObj)
 		elif self.getlessontype() in ["single-choice", "multiple-choice", "judgment"]:
