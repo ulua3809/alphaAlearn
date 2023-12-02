@@ -303,11 +303,10 @@ class codeFill(misson):
 
 		fillDict = {}
 		for ans in self.resbody["data"]["lesson"]["exercises"][self.getresourceId()]["fillBlanks"]:
-			fillDict[ans["id"]] = ans["matchRule"]
-			print("blank id {},fill {}".format(ans["id"], ans["matchRule"]))
+			fillDict[ans["id"]] = ans["replaceCharacter"]
 		for blkid in fillDict:
-			textBox = self.webdriverObj.find_element(By.XPATH,
-			                                         '//*[@id="{}"]/div/input'.format(blkid))
+			print("blank id {},fill {}".format(blkid, fillDict[blkid]))
+			textBox = self.webdriverObj.find_element(By.XPATH, '//*[@id="{}"]/div/input'.format(blkid))
 			textBox.clear()
 			textBox.send_keys(fillDict[blkid])
 		time.sleep(0.5)
