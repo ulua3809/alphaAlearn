@@ -132,9 +132,9 @@ class lesson:
 		return False
 		return self.resbody["data"]["learnData"]["aced"]
 
-	def getmissonObj(self, isreverse, webdriverObj: webdriver.Chrome):
-		if True:
-			return videoAndDoc(self.resbody, isreverse, webdriverObj=webdriverObj)
+	def getmissonObj(self, webdriverObj: webdriver.Chrome):
+		# if True:
+		# 	return videoAndDoc(self.resbody, webdriverObj=webdriverObj)
 		if self.getlessontype() in ["video", "document"]:
 			return videoAndDoc(self.resbody, isreverse, webdriverObj=webdriverObj)
 		elif self.getlessontype() in ["single-choice", "multiple-choice", "judgment"]:
@@ -260,10 +260,10 @@ class Choice(misson):
 
 		answerid = []
 		for opt in self.resbody["data"]["lesson"]["exercises"][self.getresourceId()]["options"]:
-			if opt["isCorrect"]:
+			if "isCorrect" in opt and opt["isCorrect"]:
 				answerid.append(opt["id"])
 				print("正确选项：", opt["option"])
-		time.sleep(2)
+		time.sleep(0.5)
 		if not self.missonmatched():
 			return None
 		anserList = self.webdriverObj.find_elements(By.XPATH,
@@ -310,7 +310,7 @@ class codeFill(misson):
 			                                         '//*[@id="{}"]/div/input'.format(blkid))
 			textBox.clear()
 			textBox.send_keys(fillDict[blkid])
-		time.sleep(2)
+		time.sleep(0.5)
 		self.commit()
 
 
