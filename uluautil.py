@@ -201,11 +201,9 @@ class misson():
 		if not self.missonmatched():
 			return None
 		if not self.isreverse:
-			nextBtn = self.webdriverObj.find_element(by=By.XPATH,
-			                                         value="{}".format(self.nextBtnXpath))
+			nextBtn = self.webdriverObj.find_element(by=By.XPATH, value="{}".format(self.nextBtnXpath))
 		else:
-			nextBtn = self.webdriverObj.find_element(by=By.XPATH,
-			                                         value="{}".format(self.pervBtnXpath))
+			nextBtn = self.webdriverObj.find_element(by=By.XPATH, value="{}".format(self.pervBtnXpath))
 		self.jsclick(nextBtn)
 
 	def learn(self):
@@ -246,8 +244,7 @@ class Choice(misson):
 	def commit(self):
 		if not self.missonmatched():
 			return None
-		comitBtn = self.webdriverObj.find_element(By.CSS_SELECTOR,
-		                                          "[class='{}']".format(self.commitBtnClass))
+		comitBtn = self.webdriverObj.find_element(By.CSS_SELECTOR, "[class='{}']".format(self.commitBtnClass))
 		self.jsclick(comitBtn)
 
 	def learn(self):
@@ -266,8 +263,7 @@ class Choice(misson):
 		time.sleep(0.5)
 		if not self.missonmatched():
 			return None
-		anserList = self.webdriverObj.find_elements(By.XPATH,
-		                                            '//*[@class="{}"]'.format(self.__optBoxclass))
+		anserList = self.webdriverObj.find_elements(By.XPATH, '//*[@class="{}"]'.format(self.__optBoxclass))
 		for opt in anserList:
 			if opt.get_attribute("value") in answerid:
 				self.jsclick(opt)
@@ -283,14 +279,12 @@ class codeFill(misson):
 	def commit(self):
 		if not self.missonmatched():
 			return None
-		comitBtn = self.webdriverObj.find_element(By.CSS_SELECTOR,
-		                                          "[class='{}']".format(self.comitBtnClass))
+		comitBtn = self.webdriverObj.find_element(By.CSS_SELECTOR, "[class='{}']".format(self.comitBtnClass))
 		self.jsclick(comitBtn)
 		time.sleep(self.waittime)
 		if not self.missonmatched():
 			return None
-		nextBtn = self.webdriverObj.find_element(By.CSS_SELECTOR,
-		                                         "[class='{}']".format(self.nextBtnClass))
+		nextBtn = self.webdriverObj.find_element(By.CSS_SELECTOR, "[class='{}']".format(self.nextBtnClass))
 		self.jsclick(nextBtn)
 
 	def learn(self):
@@ -326,10 +320,8 @@ class programming(codeFill):
 		if self.resbody["data"]["lesson"]["exercises"][self.getresourceId()]["codeSolutions"]:
 			# 是多文件
 			self.__ismultFile = True
-			anslist: list = self.resbody["data"]["lesson"]["exercises"][
-			    self.getresourceId()]["codeSolutions"]
-			persetlist: list = self.resbody["data"]["lesson"]["exercises"][
-			    self.getresourceId()]["precommonCode"]
+			anslist: list = self.resbody["data"]["lesson"]["exercises"][self.getresourceId()]["codeSolutions"]
+			persetlist: list = self.resbody["data"]["lesson"]["exercises"][self.getresourceId()]["precommonCode"]
 			showLists = []
 			for pset in persetlist:
 				# 排除隐藏文件
@@ -340,8 +332,7 @@ class programming(codeFill):
 					self.__AnsDict[ans["fileName"]] = ans["code"]
 		else:
 			self.__ismultFile = False
-			self.__singleAns = self.resbody["data"]["lesson"]["exercises"][
-			    self.getresourceId()]["codeSolution"]
+			self.__singleAns = self.resbody["data"]["lesson"]["exercises"][self.getresourceId()]["codeSolution"]
 
 	def switchTab(self, tabname: str):
 		fileTabTemplate = '//*[@class="el-tabs__nav-scroll"]//*[text()="{}"]'
@@ -401,8 +392,7 @@ class shortAnswer(Choice):
 			return None
 
 		textLocClass = "markdown-editor border flex overflow-hidden h-full"
-		answer: str = self.resbody["data"]["lesson"]["exercises"][
-		    self.getresourceId()]["answers"]["answer"]
+		answer: str = self.resbody["data"]["lesson"]["exercises"][self.getresourceId()]["answers"]["answer"]
 		time.sleep(2)
 		if not self.missonmatched():
 			return None
@@ -435,8 +425,7 @@ class match(misson):
 			return None
 
 		print("unsupport type ,analize answer")
-		for ans in self.resbody["data"]["lesson"]["exercises"][
-		    self.getresourceId()]["matchAnswers"]:
+		for ans in self.resbody["data"]["lesson"]["exercises"][self.getresourceId()]["matchAnswers"]:
 			title = ans["title"]
 			items = []
 			for obj in ans["items"]:

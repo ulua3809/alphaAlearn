@@ -7,7 +7,7 @@ from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 import uluautil as ulua
 
-browserdataPath = "./autodata"
+browserdataPath = "./autodata1"
 logpath = "./log.txt"
 chromedriverPath = "./chromedriver.exe"
 browserExecPath = "C:\\Program Files\\BraveSoftware\\Brave-Browser\\Application\\brave.exe"
@@ -27,6 +27,8 @@ def initize():
 	chromedriverPath = os.path.abspath(chromedriverPath)
 	if os.path.exists(logpath):
 		os.remove(logpath)
+	if not os.path.exists(browserdataPath):
+		os.mkdir(browserdataPath)
 
 	# initize driver
 	service = Service(executable_path=chromedriverPath)
@@ -86,9 +88,8 @@ def matchlog(logobj: ulua.perfLog, browser: webdriver.Chrome):
 			# print("-" * 50, "\nurl:{}\nrequestId:{}".format(logobj.getUrl(), logobj.getReqId()))
 			if "recordStudyTime" in logobj.getUrl():
 				Stime = ulua.stuTime(getData(logobj.getReqId(), browser, type="PostData"))
-				ulua.logPrint("时长上报成功，开始:{},时长:{},课程id:{},题目类型:{}".format(
-				    Stime.getStartTime(), ms2time(Stime.getDuration()), Stime.getlessonId(),
-				    Stime.getlessonType()))
+				ulua.logPrint("时长上报成功，开始:{},时长:{},课程id:{},题目类型:{}".format(Stime.getStartTime(), ms2time(Stime.getDuration()),
+				                                                          Stime.getlessonId(), Stime.getlessonType()))
 			elif "detail" in logobj.getUrl():
 				lessonobj = ulua.lesson(getData(logobj.getReqId(), browser, type="ResponseBody"))
 				logtoFile(json.dumps(lessonobj.getresBody()))
@@ -96,20 +97,20 @@ def matchlog(logobj: ulua.perfLog, browser: webdriver.Chrome):
 					isreverse = False
 				elif lessonobj.getlessonId() == endLessonid:
 					isreverse = True
-				ulua.logPrint(
-				    "标题:{},类型:{},课程id:{},已学时长:{},需要时长:{}mins,完成状态{},reversemode:{}".format(
-				        lessonobj.getlessontitle(), lessonobj.getlessontype(),
-				        lessonobj.getlessonId(), ms2time(lessonobj.getLearneddur()),
-				        lessonobj.getReqduration(), lessonobj.isLearned(), isreverse))
+				ulua.logPrint("标题:{},类型:{},课程id:{},已学时长:{},需要时长:{}mins,完成状态{},reversemode:{}".format(
+				    lessonobj.getlessontitle(), lessonobj.getlessontype(), lessonobj.getlessonId(),
+				    ms2time(lessonobj.getLearneddur()), lessonobj.getReqduration(), lessonobj.isLearned(), isreverse))
 				pushmisson(browser, lessonobj)
 			elif "myCoursesNew" in logobj.getUrl():
 				# print(logobj.logdict)
-				courlist = ulua.TotalTime(getData(logobj.getReqId(), browser,
-				                                  type="ResponseBody")).courselist
+				courlist = ulua.TotalTime(getData(logobj.getReqId(), browser, type="ResponseBody")).courselist
 				for courses in courlist:
-					print("课程名称：{}\n已学时长：{}\n结束时间：{}\n探索度：{}%".format(
-					    courses["courseName"], ms2time(int(courses["studyDuration"])),
-					    courses["endAt"], courses["learningProgress"]))
+					if "studyDuration" in courses:
+						studur = ms2time(int(courses["studyDuration"]))
+					else:
+						studur = ms2time(0)
+					print("课程名称：{}\n已学时长：{}\n结束时间：{}\n探索度：{}%".format(courses["courseName"], studur, courses["endAt"],
+					                                                  courses["learningProgress"]))
 
 
 def ms2time(msint: int) -> str:
@@ -124,9 +125,7 @@ def pushmisson(browser: webdriver.Chrome, lessonobj: ulua.lesson):
 
 	missonObj = lessonobj.getmissonObj(webdriverObj=browser, isreverse=isreverse)
 	if missonObj.missonmatched():
-		missonThread = threading.Thread(target=missonObj.learn,
-		                                name="lessonId {}".format(missonObj.getlessonId()),
-		                                daemon=True)
+		missonThread = threading.Thread(target=missonObj.learn, name="lessonId {}".format(missonObj.getlessonId()), daemon=True)
 		missonThread.start()
 	else:
 		print("misson id{} out of date skip".format(missonObj.getlessonId()))
