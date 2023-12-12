@@ -5,6 +5,39 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 
+browserdataPath = "./autodata"
+logpath = "./log.txt"
+chromedriverPath = "./chromedriver.exe"
+browserExecPath = "C:\\Program Files\\BraveSoftware\\Brave-Browser\\Application\\brave.exe"
+
+isEnd = False
+startLessonid = "5e3bd2ae772dec30e915dc9b"
+endLessonid = "tnt2p538g9"
+classroom = 9987
+
+
+def ms2time(msint: int) -> str:
+	ms = msint % 1000
+	sec = (msint // 1000) % 60
+	min = (msint // (1000 * 60)) % 60
+	hour = (msint // (1000 * 60 * 60))
+	return "{:02d}:{:02d}:{:02d}.{:03d}".format(hour, min, sec, ms)
+
+
+def logPrint(*Text: str):
+	Time = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime())
+	print(Time, end=" ")
+	for log in Text:
+		print(log, end=" ")
+	print("\n", end="")
+
+
+def logtoFile(str1: str):
+	file1 = open(logpath, mode='a+', encoding="utf-8")
+	file1.writelines(str1)
+	file1.write("\n")
+	file1.close()
+
 
 class perfLog:
 	logdict = {}
@@ -26,28 +59,32 @@ class perfLog:
 
 
 class stuTime:
-	stimeDic = {}
 	postData = {}
+	resbody = {}
 
-	def __init__(self, studict: dict) -> None:
-		self.stimeDic = studict
-		self.postData = json.loads(studict["postData"])
+	def __init__(self, postDataRaw: dict, resbodyRaw: dict) -> None:
+		self.postData = json.loads(postDataRaw["postData"])
+		self.resbody = json.loads(resbodyRaw["body"])
 
 	def getStartTime(self):
 		timestamp = float(self.postData["beginAt"]) // 1000
 		timeArr = time.localtime(timestamp)
-		return time.strftime("%Y-%m-%d %H:%M:%S", timeArr)
+		# return time.strftime("%Y-%m-%d %H:%M:%S", timeArr)
+		return time.strftime("%H:%M:%S", timeArr)
 
 	def getDuration(self) -> int:
 		"""
 		:Returns: millisecond of lenarned time"""
 		return self.postData["duration"]
 
-	def getlessonId(self):
+	def getlessonId(self) -> str:
 		return self.postData["lessonId"]
 
-	def getlessonType(self):
+	def getlessonType(self) -> str:
 		return self.postData["type"]
+
+	def getStatus(self) -> bool:
+		return self.resbody["ok"]
 
 
 class TotalTime:
@@ -136,38 +173,28 @@ class lesson:
 		# if True:
 		# 	return videoAndDoc(self.resbody, webdriverObj=webdriverObj)
 		if self.getlessontype() in ["video", "document"]:
-			return videoAndDoc(self.resbody, isreverse, webdriverObj=webdriverObj)
+			return videoAndDoc(self.resbody, webdriverObj=webdriverObj)
 		elif self.getlessontype() in ["single-choice", "multiple-choice", "judgment"]:
-			return Choice(self.resbody, isreverse, webdriverObj=webdriverObj)
+			return Choice(self.resbody, webdriverObj=webdriverObj)
 		elif self.getlessontype() == "code-fill":
-			return codeFill(self.resbody, isreverse, webdriverObj=webdriverObj)
+			return codeFill(self.resbody, webdriverObj=webdriverObj)
 		elif self.getlessontype() == "programming":
-			return programming(self.resbody, isreverse, webdriverObj=webdriverObj)
+			return programming(self.resbody, webdriverObj=webdriverObj)
 		elif self.getlessontype() == "short-answer":
-			return shortAnswer(self.resbody, isreverse, webdriverObj=webdriverObj)
+			return shortAnswer(self.resbody, webdriverObj=webdriverObj)
 		elif self.getlessontype() == "match":
-			return match(self.resbody, isreverse, webdriverObj=webdriverObj)
+			return match(self.resbody, webdriverObj=webdriverObj)
 		else:
-			return misson(self.resbody, isreverse, webdriverObj=webdriverObj)
-
-
-def logPrint(*Text: str):
-	Time = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime())
-	print(Time, end=" ")
-	for log in Text:
-		print(log, end=" ")
-	print("\n", end="")
+			return misson(self.resbody, webdriverObj=webdriverObj)
 
 
 class misson():
 	resbody = {}
 	nextBtnXpath = '/html/body/div[1]/div/div/div[1]/div[2]/div/button[3]'
-	pervBtnXpath = '/html/body/div[1]/div/div/div[1]/div[2]/div/button[1]'
 
-	def __init__(self, resbody, isreverse, webdriverObj: webdriver.Chrome) -> None:
+	def __init__(self, resbody, webdriverObj: webdriver.Chrome) -> None:
 		self.resbody = resbody
 		self.webdriverObj = webdriverObj
-		self.isreverse = isreverse
 
 	def jsclick(self, elements):
 		self.webdriverObj.execute_script("arguments[0].click();", elements)
@@ -200,10 +227,10 @@ class misson():
 		time.sleep(1)
 		if not self.missonmatched():
 			return None
-		if not self.isreverse:
-			nextBtn = self.webdriverObj.find_element(by=By.XPATH, value="{}".format(self.nextBtnXpath))
-		else:
-			nextBtn = self.webdriverObj.find_element(by=By.XPATH, value="{}".format(self.pervBtnXpath))
+		if isEnd:
+			self.webdriverObj.get("https://sxgxy.alphacoding.cn/courses/{}/learn/{}".format(classroom, startLessonid))
+			return
+		nextBtn = self.webdriverObj.find_element(by=By.XPATH, value="{}".format(self.nextBtnXpath))
 		self.jsclick(nextBtn)
 
 	def learn(self):

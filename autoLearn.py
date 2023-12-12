@@ -7,33 +7,23 @@ from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 import uluautil as ulua
 
-browserdataPath = "./autodata1"
-logpath = "./log.txt"
-chromedriverPath = "./chromedriver.exe"
-browserExecPath = "C:\\Program Files\\BraveSoftware\\Brave-Browser\\Application\\brave.exe"
-
-isreverse = False
-startLessonid = "5e3bd2ae772dec30e915dc9b"
-endLessonid = "tnt2p538g9"
-
 
 def initize():
 	"""
 	use relative path to script
 	"""
-	global logpath, browserdataPath, chromedriverPath
 	os.chdir(os.path.dirname(os.path.abspath(__file__)))
-	browserdataPath = os.path.abspath(browserdataPath)
-	chromedriverPath = os.path.abspath(chromedriverPath)
-	if os.path.exists(logpath):
-		os.remove(logpath)
-	if not os.path.exists(browserdataPath):
-		os.mkdir(browserdataPath)
+	ulua.browserdataPath = os.path.abspath(ulua.browserdataPath)
+	chromedriverPath = os.path.abspath(ulua.chromedriverPath)
+	if os.path.exists(ulua.logpath):
+		os.remove(ulua.logpath)
+	if not os.path.exists(ulua.browserdataPath):
+		os.mkdir(ulua.browserdataPath)
 
 	# initize driver
 	service = Service(executable_path=chromedriverPath)
 	chopt = webdriver.ChromeOptions()
-	chopt.binary_location = browserExecPath
+	chopt.binary_location = ulua.browserExecPath
 	#屏蔽webdrive检测
 	chopt.add_argument("--disable-web-security")
 	chopt.add_argument("--allow-running-insecure-content")
@@ -45,34 +35,42 @@ def initize():
 	chopt.add_experimental_option("perfLoggingPrefs", {'enableNetwork': True})
 	chopt.set_capability("goog:loggingPrefs", {"performance": "ALL"})
 	# 使用默认用户数据
-	chopt.add_argument("--user-data-dir=" + browserdataPath)
+	chopt.add_argument("--user-data-dir=" + ulua.browserdataPath)
 	# 启动浏览器
-	webdriverObj = webdriver.Chrome(chopt, service=service)
-	return webdriverObj
+	global browser
+	browser = webdriver.Chrome(chopt, service=service)
 
 
-def logtoFile(str1: str):
-	file1 = open(logpath, mode='a+', encoding="utf-8")
-	file1.writelines(str1)
-	file1.write("\n")
-	file1.close()
-
-
-def main(browser: webdriver.Chrome):
+def main():
 	browser.get("https://sxgxy.alphacoding.cn/classroom")
 	while True:
 		log = browser.get_log('performance')
 		for entry in log:
 			logdict = json.loads(entry["message"])
 			logobj = ulua.perfLog(logdict=logdict)
-			matchlog(logobj, browser=browser)
+			matchlog(logobj)
 		sleep(1)
+
+
+def matchlog(logobj: ulua.perfLog):
+	global isEnd
+	if logobj.getLogMethod() == "Network.responseReceived":
+		if logobj.getLogType() == "XHR":
+			# print("-" * 50, "\nurl:{}\nrequestId:{}".format(logobj.getUrl(), logobj.getReqId()))
+			pkgobj = pkgHandler(logobj)
+			url = logobj.getUrl()
+			if "recordStudyTime" in url:
+				pkgobj.StudyTime()
+			elif "detail" in url:
+				pkgobj.lessondetail()
+			elif "myCoursesNew" in logobj.getUrl():
+				pkgobj.CoursesInfo()
 
 
 DataType = Literal["PostData", "ResponseBody"]
 
 
-def getData(requestId: str, browser: webdriver.Chrome, type: DataType) -> dict:
+def getData(requestId: str, type: DataType) -> dict:
 	if type == "PostData":
 		return browser.execute_cdp_cmd('Network.getRequestPostData', {'requestId': requestId})
 	elif type == "ResponseBody":
@@ -81,49 +79,10 @@ def getData(requestId: str, browser: webdriver.Chrome, type: DataType) -> dict:
 		return {}
 
 
-def matchlog(logobj: ulua.perfLog, browser: webdriver.Chrome):
-	global isreverse
-	if logobj.getLogMethod() == "Network.responseReceived":
-		if logobj.getLogType() == "XHR":
-			# print("-" * 50, "\nurl:{}\nrequestId:{}".format(logobj.getUrl(), logobj.getReqId()))
-			if "recordStudyTime" in logobj.getUrl():
-				Stime = ulua.stuTime(getData(logobj.getReqId(), browser, type="PostData"))
-				ulua.logPrint("时长上报成功，开始:{},时长:{},课程id:{},题目类型:{}".format(Stime.getStartTime(), ms2time(Stime.getDuration()),
-				                                                          Stime.getlessonId(), Stime.getlessonType()))
-			elif "detail" in logobj.getUrl():
-				lessonobj = ulua.lesson(getData(logobj.getReqId(), browser, type="ResponseBody"))
-				logtoFile(json.dumps(lessonobj.getresBody()))
-				if lessonobj.getlessonId() == startLessonid:
-					isreverse = False
-				elif lessonobj.getlessonId() == endLessonid:
-					isreverse = True
-				ulua.logPrint("标题:{},类型:{},课程id:{},已学时长:{},需要时长:{}mins,完成状态{},reversemode:{}".format(
-				    lessonobj.getlessontitle(), lessonobj.getlessontype(), lessonobj.getlessonId(),
-				    ms2time(lessonobj.getLearneddur()), lessonobj.getReqduration(), lessonobj.isLearned(), isreverse))
-				pushmisson(browser, lessonobj)
-			elif "myCoursesNew" in logobj.getUrl():
-				# print(logobj.logdict)
-				courlist = ulua.TotalTime(getData(logobj.getReqId(), browser, type="ResponseBody")).courselist
-				for courses in courlist:
-					if "studyDuration" in courses:
-						studur = ms2time(int(courses["studyDuration"]))
-					else:
-						studur = ms2time(0)
-					print("课程名称：{}\n已学时长：{}\n结束时间：{}\n探索度：{}%".format(courses["courseName"], studur, courses["endAt"],
-					                                                  courses["learningProgress"]))
 
+def pushmisson(lessonobj: ulua.lesson):
 
-def ms2time(msint: int) -> str:
-	ms = msint % 1000
-	sec = (msint // 1000) % 60
-	min = (msint // (1000 * 60)) % 60
-	hour = (msint // (1000 * 60 * 60))
-	return "{:02d}:{:02d}:{:02d}.{:03d}".format(hour, min, sec, ms)
-
-
-def pushmisson(browser: webdriver.Chrome, lessonobj: ulua.lesson):
-
-	missonObj = lessonobj.getmissonObj(webdriverObj=browser, isreverse=isreverse)
+	missonObj = lessonobj.getmissonObj(webdriverObj=browser)
 	if missonObj.missonmatched():
 		missonThread = threading.Thread(target=missonObj.learn, name="lessonId {}".format(missonObj.getlessonId()), daemon=True)
 		missonThread.start()
@@ -131,5 +90,46 @@ def pushmisson(browser: webdriver.Chrome, lessonobj: ulua.lesson):
 		print("misson id{} out of date skip".format(missonObj.getlessonId()))
 
 
+class pkgHandler():
+
+	def __init__(self, logobj: ulua.perfLog) -> None:
+		self.logobj = logobj
+
+	def StudyTime(self):
+		reqid = self.logobj.getReqId()
+		Stime = ulua.stuTime(getData(reqid, type="PostData"), getData(reqid, type="ResponseBody"))
+		tample = "时长已上报，状态{}，开始:{},时长:{},课程id:{},题目类型:{}"
+		logstr = tample.format(Stime.getStatus(), Stime.getStartTime(),
+		                       ulua.ms2time(Stime.getDuration())[3:], Stime.getlessonId(), Stime.getlessonType())
+		if not Stime.getStatus():
+			ulua.logtoFile(json.dumps(Stime.resbody))
+		ulua.logPrint(logstr)
+
+	def lessondetail(self):
+		lessonobj = ulua.lesson(getData(self.logobj.getReqId(), type="ResponseBody"))
+		# logtoFile(json.dumps(lessonobj.getresBody()))
+		if lessonobj.getlessonId() == ulua.endLessonid:
+			ulua.isEnd = True
+		else:
+			ulua.isEnd = False
+		tample = "标题:{},类型:{},课程id:{},已学时长:{},需要时长:{}mins,完成状态{}"
+		logstr = tample.format(lessonobj.getlessontitle(), lessonobj.getlessontype(), lessonobj.getlessonId(),
+		                       ulua.ms2time(lessonobj.getLearneddur()), lessonobj.getReqduration(), lessonobj.isLearned())
+		ulua.logPrint(logstr)
+		pushmisson(lessonobj)
+
+	def CoursesInfo(self):
+		courlist = ulua.TotalTime(getData(self.logobj.getReqId(), type="ResponseBody")).courselist
+		for courses in courlist:
+			if "studyDuration" in courses:
+				studur = ulua.ms2time(int(courses["studyDuration"]))
+			else:
+				studur = ulua.ms2time(0)
+			tample = "\n课程名称：{}\n已学时长：{}\n结束时间：{}\n探索度：{}%"
+			logstr = tample.format(courses["courseName"], studur, courses["endAt"], courses["learningProgress"])
+			ulua.logPrint(logstr)
+
+
 if __name__ == "__main__":
-	main(initize())
+	initize()
+	main()
