@@ -2,10 +2,10 @@ import json
 import os
 import threading
 from time import sleep
-from typing import Literal
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 import uluautil as ulua
+from uluautil import browser
 
 
 def initize():
@@ -38,10 +38,12 @@ def initize():
 	chopt.add_argument("--user-data-dir=" + ulua.browserdataPath)
 	# 启动浏览器
 	global browser
-	browser = webdriver.Chrome(chopt, service=service)
+	ulua.browser = webdriver.Chrome(chopt, service=service)
+	browser = ulua.browser
 
 
 def main():
+	assert browser is not None
 	browser.get("https://sxgxy.alphacoding.cn/classroom")
 	while True:
 		log = browser.get_log('performance')
@@ -67,21 +69,8 @@ def matchlog(logobj: ulua.perfLog):
 				pkgobj.CoursesInfo()
 
 
-DataType = Literal["PostData", "ResponseBody"]
-
-
-def getData(requestId: str, type: DataType) -> dict:
-	if type == "PostData":
-		return browser.execute_cdp_cmd('Network.getRequestPostData', {'requestId': requestId})
-	elif type == "ResponseBody":
-		return browser.execute_cdp_cmd('Network.getResponseBody', {'requestId': requestId})
-	else:
-		return {}
-
-
-
 def pushmisson(lessonobj: ulua.lesson):
-
+	assert browser is not None
 	missonObj = lessonobj.getmissonObj(webdriverObj=browser)
 	if missonObj.missonmatched():
 		missonThread = threading.Thread(target=missonObj.learn, name="lessonId {}".format(missonObj.getlessonId()), daemon=True)
@@ -96,17 +85,20 @@ class pkgHandler():
 		self.logobj = logobj
 
 	def StudyTime(self):
-		reqid = self.logobj.getReqId()
-		Stime = ulua.stuTime(getData(reqid, type="PostData"), getData(reqid, type="ResponseBody"))
-		tample = "时长已上报，状态{}，开始:{},时长:{},课程id:{},题目类型:{}"
-		logstr = tample.format(Stime.getStatus(), Stime.getStartTime(),
+		Stime = ulua.stuTime(self.logobj)
+		if Stime.error:
+			ulua.logPrint("时长上报出错，已记录日志")
+			return
+		tample = "时长已上报，开始:{},时长:{},课程id:{},题目类型:{}"
+		logstr = tample.format(Stime.getStartTime(),
 		                       ulua.ms2time(Stime.getDuration())[3:], Stime.getlessonId(), Stime.getlessonType())
-		if not Stime.getStatus():
-			ulua.logtoFile(json.dumps(Stime.resbody))
 		ulua.logPrint(logstr)
 
 	def lessondetail(self):
-		lessonobj = ulua.lesson(getData(self.logobj.getReqId(), type="ResponseBody"))
+		lessonobj = ulua.lesson(ulua.getData(self.logobj.getReqId(), type="ResponseBody"))
+		if lessonobj.error:
+			ulua.logPrint("题目获取出错，已记录日志")
+			return
 		# logtoFile(json.dumps(lessonobj.getresBody()))
 		if lessonobj.getlessonId() == ulua.endLessonid:
 			ulua.isEnd = True
@@ -119,7 +111,11 @@ class pkgHandler():
 		pushmisson(lessonobj)
 
 	def CoursesInfo(self):
-		courlist = ulua.TotalTime(getData(self.logobj.getReqId(), type="ResponseBody")).courselist
+		courseobj = ulua.TotalTime(self.logobj)
+		if courseobj.error:
+			ulua.logPrint("学习记录获取出错，已记录日志")
+			return
+		courlist = courseobj.courselist
 		for courses in courlist:
 			if "studyDuration" in courses:
 				studur = ulua.ms2time(int(courses["studyDuration"]))

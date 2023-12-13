@@ -1,5 +1,6 @@
 import json
 import time
+from typing import Literal
 import pyperclip
 from selenium import webdriver
 from selenium.webdriver.common.by import By
@@ -9,11 +10,26 @@ browserdataPath = "./autodata"
 logpath = "./log.txt"
 chromedriverPath = "./chromedriver.exe"
 browserExecPath = "C:\\Program Files\\BraveSoftware\\Brave-Browser\\Application\\brave.exe"
-
-isEnd = False
 startLessonid = "5e3bd2ae772dec30e915dc9b"
 endLessonid = "tnt2p538g9"
 classroom = 9987
+# global Parts Do not modify
+isEnd = False
+browser = None
+
+DataType = Literal["PostData", "ResponseBody"]
+
+
+def getData(requestId: str, type: DataType) -> dict:
+	if not browser:
+		print("Error  browser is none")
+		return {}
+	if type == "PostData":
+		return browser.execute_cdp_cmd('Network.getRequestPostData', {'requestId': requestId})
+	elif type == "ResponseBody":
+		return browser.execute_cdp_cmd('Network.getResponseBody', {'requestId': requestId})
+	else:
+		return {}
 
 
 def ms2time(msint: int) -> str:
@@ -24,12 +40,13 @@ def ms2time(msint: int) -> str:
 	return "{:02d}:{:02d}:{:02d}.{:03d}".format(hour, min, sec, ms)
 
 
-def logPrint(*Text: str):
+def logPrint(*Text: str) -> str:
 	Time = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime())
-	print(Time, end=" ")
+	prStr = Time + " "
 	for log in Text:
-		print(log, end=" ")
-	print("\n", end="")
+		prStr += log + " "
+	print(prStr)
+	return prStr
 
 
 def logtoFile(str1: str):
@@ -61,10 +78,27 @@ class perfLog:
 class stuTime:
 	postData = {}
 	resbody = {}
+	logDict = {}
+	error = False
 
-	def __init__(self, postDataRaw: dict, resbodyRaw: dict) -> None:
-		self.postData = json.loads(postDataRaw["postData"])
-		self.resbody = json.loads(resbodyRaw["body"])
+	def __init__(self, logobj: perfLog) -> None:
+		postDataRaw = getData(logobj.getReqId(), "PostData")
+		resbodyRaw = getData(logobj.getReqId(), "ResponseBody")
+		try:
+			self.postData = json.loads(postDataRaw["postData"])
+			self.resbody = json.loads(resbodyRaw["body"])
+		except json.decoder.JSONDecodeError as e:
+			logtoFile(logPrint("Error: studyTime Decode Error"))
+			logtoFile(str(e))
+			logtoFile(str(postDataRaw))
+			logtoFile(str(resbodyRaw))
+			self.error = True
+			return
+		if "ok" in self.resbody and not self.resbody["ok"]:
+			logtoFile(logPrint("Error: studyTime receive Error"))
+			logtoFile(str(self.postData))
+			logtoFile(str(self.resbody))
+			self.error = True
 
 	def getStartTime(self):
 		timestamp = float(self.postData["beginAt"]) // 1000
@@ -83,31 +117,52 @@ class stuTime:
 	def getlessonType(self) -> str:
 		return self.postData["type"]
 
-	def getStatus(self) -> bool:
-		return self.resbody["ok"]
-
 
 class TotalTime:
 	ttimeDic = {}
 	resbody = {}
 	courselist = []
+	error = False
 
-	def __init__(self, studict: dict) -> None:
-		self.stimeDic = studict
-		self.resbody = json.loads(studict["body"])
+	def __init__(self, logobj: perfLog) -> None:
+		self.rawRespon = getData(logobj.getReqId(), "ResponseBody")
+		try:
+			self.resbody = json.loads(self.rawRespon["body"])
+		except json.decoder.JSONDecodeError as e:
+			logtoFile(logPrint("Error: TotalTime Decode Error"))
+			logtoFile(str(e))
+			logtoFile(str(self.rawRespon))
+			self.error = True
+			return
+		if "ok" in self.resbody and not self.resbody["ok"]:
+			logtoFile(logPrint("Error: studyTime receive Error"))
+			logtoFile(str(self.resbody))
+			self.error = True
 		self.courselist = self.resbody["data"]["courses"]
 
 
 class lesson:
-	questDict = {}
+	ResponRaw = {}
 	resbody = {}
+	error = False
 
-	def __init__(self, questDict: dict = {}, resbody: dict = {}) -> None:
-		if questDict:
-			self.questDict = questDict
-			self.resbody = json.loads(questDict["body"])
+	def __init__(self, ResponRaw: dict = {}, resbody: dict = {}) -> None:
+		if ResponRaw:
+			self.ResponRaw = ResponRaw
+			try:
+				self.resbody = json.loads(ResponRaw["body"])
+			except json.decoder.JSONDecodeError as e:
+				logtoFile(logPrint("Error: lesson Decode Error"))
+				logtoFile(str(e))
+				logtoFile(str(ResponRaw))
+				self.error = True
+				return
 		if resbody:
 			self.resbody = resbody
+		if "ok" in self.resbody and not self.resbody["ok"]:
+			logtoFile(logPrint("Error: lesson receive Error"))
+			logtoFile(str(self.resbody))
+			self.error = True
 
 	def getresBody(self) -> dict:
 		return self.resbody
