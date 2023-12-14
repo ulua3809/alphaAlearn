@@ -1,5 +1,7 @@
+import getopt
 import json
 import os
+import sys
 import threading
 from time import sleep
 from selenium import webdriver
@@ -8,10 +10,16 @@ import uluautil as ulua
 from uluautil import browser
 
 
-def initize():
+def initize(argv: list):
 	"""
 	use relative path to script
 	"""
+	opts, args = getopt.getopt(argv[1:], "b:l:", ["browserdataPath=", "logpath="])
+	for opt, args in opts:
+		if opt in ("-b", "--browserdataPath"):
+			ulua.browserdataPath = args
+		elif opt in ("-l", "--logpath"):
+			ulua.logpath = args
 	os.chdir(os.path.dirname(os.path.abspath(__file__)))
 	ulua.browserdataPath = os.path.abspath(ulua.browserdataPath)
 	chromedriverPath = os.path.abspath(ulua.chromedriverPath)
@@ -51,7 +59,11 @@ def main():
 			logdict = json.loads(entry["message"])
 			logobj = ulua.perfLog(logdict=logdict)
 			matchlog(logobj)
-		sleep(1)
+		try:
+			sleep(1)
+		except KeyboardInterrupt as e:
+			ulua.logPrint("脚本已退出")
+			sys.exit(0)
 
 
 def matchlog(logobj: ulua.perfLog):
@@ -127,5 +139,5 @@ class pkgHandler():
 
 
 if __name__ == "__main__":
-	initize()
+	initize(sys.argv)
 	main()
