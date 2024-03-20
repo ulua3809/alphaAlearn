@@ -1,5 +1,8 @@
 # alphacodeAlearn
 
+# this repo is not maintained anymore !
+
+
 ## alpha coding Autolearning script powered by python
 
 # support states
